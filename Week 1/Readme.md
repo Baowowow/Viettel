@@ -26,7 +26,7 @@
 #### 2. RAID Levels
 Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách sử dụng kết hợp các phương pháp lưu trữ như `Phân chia dải (striping)`, `Tạo bản sao (Mirroring)` và `Parity (chẵn lẻ)`. Việc sử dụng và kết hợp các kỹ thuật này vào hệ thống RAID được gọi là RAID levels. Mỗi level sẽ có một hiệu năng, độ tin cậy và giá cả khác nhau. Mỗi level cũng có 1 thuật toán khác biệt để thực hiện khả năng chịu lỗi
 - **RAID 0**: **RAID 0** thực hiện `block striping` (phân chia dải theo khối), tức là chia luồng dữ liệu thành các khối logic và phân chia tuần tự vào các ổ đĩa. Khác với các RAID khác, **RAID 0** 0 không có khả năng chịu lỗi, nếu 1 ổ đĩa hỏng thì dữ liệu sẽ bị mất. Tuy vậy, **RAID 0** cung cấp hiệu năng cao nhất. Nó nhanh bởi vì dữ liệu có thể được chuyển đồng thời từ tất cả các ổ đĩa và việc đọc ghi giữa các ổ đĩa cũng có thể được thực hiện đồng thời. 
- - Tổng dung lượng ổ đĩa sẽ tương ứng với tổng dung lượng của từng ổ đĩa được gộp lại. RAID 0 yêu cầu phải có ít nhất 2 ổ cứng.
+    - Tổng dung lượng ổ đĩa sẽ tương ứng với tổng dung lượng của từng ổ đĩa được gộp lại. RAID 0 yêu cầu phải có ít nhất 2 ổ cứng.
  
  <img src="./Images/raid0.png">
 
@@ -55,10 +55,14 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
  <img src="./Images/raid3.png">
 
 - **RAID 4**: Tương tự như `RAID 3` nhưng dữ liệu được phân tán tuần tự theo các khối thay vì các byte. **RAID 4** yêu cầu phải có ít nhất 3 ổ cứng.
+
 - **RAID 5**: Dữ liệu và các Parity sẽ được phân tán tuần tự qua các ổ đĩa. Dữ liệu và parity dự phòng tương ứng của nó không bao giờ cùng nằm trên 1 ổ đĩa. Khi 1 ổ đĩa bị hỏng, dữ liệu gốc của nó có thể khôi phục bằng cách sử dụng Parity nằm ở ổ đĩa khác. **RAID 5** sẽ cho phép có 1 ổ cứng tối đa bị chết ở 1 thời điểm, nếu như có nhiều hơn một ổ cứng ở một thời điểm bị chết thì tất cả dữ liệu sẽ mất hết.
     - **RAID 5** vừa cung cấp được cơ chế chịu lỗi vừa đảm bảo hiệu suất hơn so với RAID 3 hay RAID 4 nên nó là công nghệ RAID được sử dụng phổ biến nhất hiện nay. 
     - Tổng dung lượng khả dụng sẽ = [(Tổng số ổ cứng - 1 (ổ dành cho parity)) x (Dung lượng của một ổ cứng)]. RAID 5 yêu cầu phải có ít nhất 3 ổ cứng.
 
+ <img src="./Images/raid5.png">
+ 
+ 
 - **RAID 6**: Tương tự như `RAID 5` nhưng có thêm 1 parity được phân tán qua các ổ đĩa để đảm bảo hệ thống có thể hoạt động kể cả khi 2 ổ cứng bị hỏng. **RAID 6** yêu cầu phải có ít nhất 4 ổ cứng.
 
 ### II. Các Performance Metrics cơ bản
@@ -75,18 +79,28 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 #### 2. Throughput
 **Throughput** (Thông lượng): Tốc độ truyền dữ liệu (mb/s). Nếu IOPS đo số lượng tác vụ đọc ghi được hoàn thành trong 1 giây thì Throughput đo số bits được đọc hoặc viết mỗi giây
    - Throughput = IOPS * IO Average size
+   
 #### 3. Latency
 **Latency** là tổng thời gian hoàn thành từ khi 1 yêu cầu được nhận cho đến khi người yêu cầu nhận được phản hồi từ hệ thống
 
+ <img src="./Images/Latency.png">
+
 #### 4. IO size
 **IO size**: Kích thước của 1 hoạt động I/O, có thể được coi là payload (kích thước phần dữ liệu thực sự được truyền đi 2 phía). Kích thước I/O được tính theo kb và thường nằm trong khoảng từ 512 bytes đến 256 KB, hoặc có thể lên đến 1 MB.
+
 #### 5. Block size
 **Block size**: 1 block là khái niệm trừu tượng của nhiều khối dữ liệu vật lý. File hệ thống thường viết dữ liệu theo blocks dữ liệu thay vì bits hay bytes đơn. 
 VD: SQL server logs sử dụng khối các block 64 kb, Windows server sử dụng các block 4kb
 Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể được cấp cho 1 file và nó cũng là lượng dữ liệu lớn nhất có thể truy cập ở 1 hoạt động I/O đơn. 
 
+> Sử dụng tool benchmark iostat để kiểm tra các thông tin thống kê về CPU và I/O
+ <img src="./Images/iostat.png">
 
 ### III. Khái niệm về Software Define Storage
 **Software Defined Storage (SDS)** là kiến trúc lưu trữ mà phân tách phần mềm lưu trữ (thực hiện chức năng cung cấp dung lượng, bảo vệ dữ liệu và điều khiển sắp xếp dữ liệu) với phần cứng của nó. 
 Việc tách phần mềm ra khỏi phần cứng cho phép SDS có thể dễ dàng thay đổi, nâng cấp và mở rộng phần cứng mà không ảnh hướng đến tài nguyên phần mềm. Khác với các hệ thống lưu trữ cũ như NAS hay SAN, SDN được thiết kế để có thể thực hiện với mọi tiêu chuẩn công nghiệp hoặc hệ thống x86, bỏ đi sự phụ thuộc của phần mềm vào phần cứng độc quyền với mức giá phải chăng.
+SDS còn có khả năng quản lý tập trung các storage trong khi vẫn đảm bảo được các đặc điểm và tính năng đa dạng cho nó. Nói cách khác SDS như 1 controller phần mềm giúp ảo hóa và quản lý bộ lưu trữ vật lý của bạn
+
+ <img src="./Images/sds.png">
+
 
