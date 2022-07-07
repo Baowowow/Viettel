@@ -58,7 +58,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 
 - **RAID 5**: Dữ liệu và các Parity sẽ được phân tán tuần tự qua các ổ đĩa. Dữ liệu và parity dự phòng tương ứng của nó không bao giờ cùng nằm trên 1 ổ đĩa. Khi 1 ổ đĩa bị hỏng, dữ liệu gốc của nó có thể khôi phục bằng cách sử dụng Parity nằm ở ổ đĩa khác. **RAID 5** sẽ cho phép có 1 ổ cứng tối đa bị chết ở 1 thời điểm, nếu như có nhiều hơn một ổ cứng ở một thời điểm bị chết thì tất cả dữ liệu sẽ mất hết.
     - **RAID 5** vừa cung cấp được cơ chế chịu lỗi vừa đảm bảo hiệu suất hơn so với RAID 3 hay RAID 4 nên nó là công nghệ RAID được sử dụng phổ biến nhất hiện nay. 
-    - Tổng dung lượng khả dụng sẽ = [(Tổng số ổ cứng - 1 (ổ dành cho parity)) x (Dung lượng của một ổ cứng)]. RAID 5 yêu cầu phải có ít nhất 3 ổ cứng.
+    - Tổng dung lượng khả dụng sẽ = [(Tổng số ổ cứng - 1 (ổ dành cho parity)) x (Dung lượng của một ổ cứng)]. **RAID 5** yêu cầu phải có ít nhất 3 ổ cứng.
 
  <img src="./Images/raid5.png">
  
@@ -72,7 +72,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 - Một số công thức liên quan đến IOPS
     - Tổng IOPS = IOPS per Disk * Số ổ cứng
 
-    - IOPS thực = (Tổng IOPS * Write%)/(Raid Penalty) + (Tổng IOPS * Read %) (Raid Penalty: Số lượng ổ cứng yêu cầu)
+    - IOPS thực = (Tổng IOPS * Write%)/(Raid Penalty) + (Tổng IOPS * Read %) (Raid Penalty: Số lượng ổ cứng tối thiểu ứng với mỗi RAID level)
 
     - Số ổ cứng = ((Read IOPS) + (Write IOPS*Raid Penalty))/ IOPS per Disk
 
@@ -83,7 +83,10 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 #### 3. Latency
 **Latency** là tổng thời gian hoàn thành từ khi 1 yêu cầu được nhận cho đến khi người yêu cầu nhận được phản hồi từ hệ thống
 
+
  <img src="./Images/Latency.png">
+
+
 
 #### 4. IO size
 **IO size**: Kích thước của 1 hoạt động I/O, có thể được coi là payload (kích thước phần dữ liệu thực sự được truyền đi 2 phía). Kích thước I/O được tính theo kb và thường nằm trong khoảng từ 512 bytes đến 256 KB, hoặc có thể lên đến 1 MB.
