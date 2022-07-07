@@ -100,13 +100,14 @@ Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể đư�
  <img src="./Images/iostat.png">
  
  
- 
- - %iowait: phần trăm thời gian mà CPU(s) rảnh  khi hệ thống thực hiện disk I/O request.
- - %idle: phần trăm thời gian mà CPU(s) rảnh và hệ thống không thực hiện disk I/O request.
- - %steal: xem thêm ở man 1 iostat.
- Phần the Device Utilization report cũng gồm 7 giá trị (tên cột / số cột hay đơn vị có thể khác nếu sử dụng các option của iostat, ở đây chỉ viết về ví dụ nói trên)
- - Device: tên device, ở đây là "sda". Một device có 1 hay nhiều partition. (dùng iostat -pd sda để hiển thị thông số cho từng partition trong sda)
-tps: transfer per second. Mỗi  transfer là một I/O request đến device. Nhiều logical request có thể được hợp lại thành 1 I/O request đến device =>  một transfer không có kích thước cố định.
+ Các thông số có ý nghĩa như sau
+ - %user: phần trăm CPU sử dụng khi chạy các ứng dụng ở trạng thái user
+ - %system: phần trăm CPU sử dụng khi chạy kernel
+ - %iowait: phần trăm thời gian mà CPU rảnh  khi hệ thống thực hiện I/O request.
+ - %idle: phần trăm thời gian mà CPU rảnh và hệ thống không thực hiện disk I/O request.
+ - %steal: Phát hiện lỗi của môi trường ảo
+ - Device: Tên device
+ - tps: transfer per second. Mỗi  transfer là một I/O request đến device. Nhiều logical request có thể được hợp lại thành 1 I/O request đến device =>  một transfer không có kích thước cố định.
 - kB_read/s: số kilobytes đọc từ device
 - kB_read: tổng số kilobytes đọc từ device  = kB_read/s * interval (s)
 - kB_wrtn/s: số kilobytes ghi vào device
