@@ -123,3 +123,21 @@ SDS còn có khả năng quản lý tập trung các storage trong khi vẫn đ�
  <img src="./Images/sds.png">
 
 
+### IV. Tài liệu tham khảo
+-  [Chapter 4. Redundant Array of Independent Disks (RAID) (mit.edu)](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-raid.html)
+-  [RAID (Redundant Arrays of Independent Disks) - GeeksforGeeks](https://www.geeksforgeeks.org/raid-redundant-arrays-of-independent-disks/)
+-  [RAID - Wikipedia](https://en.wikipedia.org/wiki/RAID)
+-  [RAID là gì? Các loại RAID và cách triển khai hiệu quả nhất (fptcloud.com)](https://fptcloud.com/raid-la-gi/)
+-  [Difference Between Hardware RAID vs Software RAID - GeeksforGeeks](https://www.geeksforgeeks.org/difference-between-hardware-raid-vs-software-raid/#:~:text=1.,the%20RAID%20disks%20are%20installed.)
+-  [RAID Basics (oracle.com)](https://docs.oracle.com/cd/E19247-01/817-3337-18/appa_raid_basic.html)
+-  [Tìm hiểu về các thông số: IOPS, Latency và Throughput (viettelidc.com.vn)](https://viettelidc.com.vn/tin-tuc/tim-hieu-ve-cac-thong-so-iops-latency-va-throughput)
+-  [IOPs and Latency - Marvell Blog | We’re Building the Future of Data Infrastructure](https://blogs.marvell.com/2018/08/iops-and-latency/#:~:text=IOPS%20is%20a%20neutral%20measure,the%20requestor%20receiving%20a%20response.)
+-  [Page firstBlock sizePage last - IBM Documentation](https://www.ibm.com/docs/en/spectrum-scale/5.0.0?topic=considerations-block-size)
+-  [Know Your Storage Constraints: IOPS and Throughput (lunavi.com)](https://www.lunavi.com/blog/know-your-storage-constraints-iops-and-throughput#:~:text=Throughput%20measures%20the%20data%20transfer,also%20change%20the%20overall%20throughput.)
+-  [virtualguido: Understanding I/O - What about IOPS, Throughput, Latency and I/O Size](https://virtualguido.blogspot.com/2016/10/understanding-io-what-about-iops.html)
+-  [IO Size (MB) (oracle.com)](https://docs.oracle.com/cd/B16240_01/doc/doc.102/e16282/osm_instance_help/osm_instance_diskgroup_performance_io_size.html)
+-  [IO Size. (usenix.org)](https://www.usenix.org/legacy/event/fast09/tech/full_papers/gulati/gulati_html/node11.html#:~:text=Typical%20storage%20IO%20sizes%20range,model%20with%20certain%20fixed%20costs.)
+-  [What is software-defined storage? (redhat.com)](https://www.redhat.com/en/topics/data-storage/software-defined-storage)
+-  [Software-Defined Storage: The Definitive Guide | DataCore](https://www.datacore.com/software-defined-storage/)
+-  [FAMILUG: [Monitoring] iostat - hiển thị các thông tin thống kê về CPU và I/O](https://www.familug.org/2013/12/monitoring-iostat-hien-thi-cac-thong.html)
+
