@@ -103,6 +103,7 @@ Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể đư�
  Các thông số có ý nghĩa như sau
  - %user: phần trăm CPU sử dụng khi chạy các ứng dụng ở trạng thái user
  - %system: phần trăm CPU sử dụng khi chạy kernel
+ - %nice: tương tự %user nhưng có thêm nice numbers để thể hiện sự ưu tiên
  - %iowait: phần trăm thời gian mà CPU rảnh  khi hệ thống thực hiện I/O request.
  - %idle: phần trăm thời gian mà CPU rảnh và hệ thống không thực hiện disk I/O request.
  - %steal: Phát hiện lỗi của môi trường ảo
