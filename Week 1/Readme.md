@@ -68,7 +68,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 ### II. Các Performance Metrics cơ bản
 
 #### 1. IOPS 
-**IOPS** - Input/Output operation per second: Đơn vị đo tiêu chuẩn được sử dụng cho các thiết bị lưu trữ để đo số lượng tác vụ đọc ghi được hoàn thành trong 1 giây. Thông số IOPS càng cao thì tốc độ xử lý càng nhanh, tác vụ xử lý càng nhiều giúp tăng hiệu năng thiết bị.
+**IOPS** - Input/Output operation per second: Đơn vị đo tiêu chuẩn được sử dụng cho các thiết bị lưu trữ để đo số lượng tác vụ đọc ghi được hoàn thành trong 1 giây. Thông số **IOPS** càng cao thì tốc độ xử lý càng nhanh, tác vụ xử lý càng nhiều giúp tăng hiệu năng thiết bị.
 - Một số công thức liên quan đến IOPS
     - Tổng IOPS = IOPS per Disk * Số ổ cứng
 
