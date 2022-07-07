@@ -84,7 +84,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 **Latency** là tổng thời gian hoàn thành từ khi 1 yêu cầu được nhận cho đến khi người yêu cầu nhận được phản hồi từ hệ thống
 
 
- <img src="./Images/Latency.png">
+ <img src="./Images/latency.png">
 
 
 
@@ -98,6 +98,17 @@ Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể đư�
 
 > Sử dụng tool benchmark iostat để kiểm tra các thông tin thống kê về CPU và I/O
  <img src="./Images/iostat.png">
+ - %iowait: phần trăm thời gian mà CPU(s) rảnh  khi hệ thống thực hiện disk I/O request.
+ - %idle: phần trăm thời gian mà CPU(s) rảnh và hệ thống không thực hiện disk I/O request.
+- %steal: xem thêm ở man 1 iostat.
+Phần the Device Utilization report cũng gồm 7 giá trị (tên cột / số cột hay đơn vị có thể khác nếu sử dụng các option của iostat, ở đây chỉ viết về ví dụ nói trên)
+- Device: tên device, ở đây là "sda". Một device có 1 hay nhiều partition. (dùng iostat -pd sda để hiển thị thông số cho từng partition trong sda)
+tps: transfer per second. Mỗi  transfer là một I/O request đến device. Nhiều logical request có thể được hợp lại thành 1 I/O request đến device =>  một transfer không có kích thước cố định.
+- kB_read/s: số kilobytes đọc từ device
+- kB_read: tổng số kilobytes đọc từ device  = kB_read/s * interval (s)
+- kB_wrtn/s: số kilobytes ghi vào device
+- kB_wrtn: tổng số kilobytes ghi  từ device  = kB_read/s * interval (s)
+
 
 ### III. Khái niệm về Software Define Storage
 **Software Defined Storage (SDS)** là kiến trúc lưu trữ mà phân tách phần mềm lưu trữ (thực hiện chức năng cung cấp dung lượng, bảo vệ dữ liệu và điều khiển sắp xếp dữ liệu) với phần cứng của nó. 
