@@ -43,8 +43,8 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
  
  <img src="./Images/raid2.png">
 
-- **RAID 1+0**: Sự kết hợp của `RAID 0` và `RAID 1`. Áp dụng cả `striping` và `disk mirroring` nên phương pháp này đảm bảo cả hiệu năng và khả năng sửa lỗi. Vì đây không phải là RAID level theo chuẩn nên nó sẽ không xuất hiện trong lựa chọn level được hỗ trợ bởi controller. Nếu 4 hoặc nhiều ổ đĩa hơn (theo số chẵn) được chọn cho RAID 1 thì RAID 1+0 sẽ được tự động áp dụng. 
-     - Tổng dung lượng khả dụng sẽ bằng [(tổng số ổ cứng gộp lại chia đôi) x  (Dung lượng của một ổ cứng)]. RAID 1+0 yêu cầu phải có ít nhất 4 ổ cứng.
+- **RAID 1+0**: Sự kết hợp của `RAID 0` và `RAID 1`. Áp dụng cả `striping` và `disk mirroring` nên phương pháp này đảm bảo cả hiệu năng và khả năng sửa lỗi. Vì đây không phải là RAID level theo chuẩn nên nó sẽ không xuất hiện trong lựa chọn level được hỗ trợ bởi controller. Nếu 4 hoặc nhiều ổ đĩa hơn (theo số chẵn) được chọn cho RAID 1 thì **RAID 1+0** sẽ được tự động áp dụng. 
+     - Tổng dung lượng khả dụng = [(tổng số ổ cứng gộp lại chia đôi) x  (Dung lượng của một ổ cứng)]. RAID 1+0 yêu cầu phải có ít nhất 4 ổ cứng.
  
  <img src="./Images/raid10.png">
 
