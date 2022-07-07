@@ -18,7 +18,7 @@
 - RAID sẽ hoạt động bằng cách cho phép dữ liệu truy cập vào nhiều ổ đĩa. Các ổ đĩa tập hợp này sẽ được hệ điều hành hiểu như 1 một ổ lưu trữ đơn
 - Việc thực thi **RAID** có thể được hoàn thành bằng cách sử dụng 1 controller đặc biệt (hardware RAID) hoặc bởi 1 driver hệ điều hành (software RAID)
      - `Hardware RAID`: Các ổ đĩa được kết nối vào 1 controller thường nằm ở RAID card hoặc được tạo trên 1 bo mạch. Controller sẽ xử lý trực tiếp các ổ đĩa và tất cả quá trình xử lý sẽ được hoàn thành trên nó vì thế nên RAID Controller quản lý cấu hình RAID hoàn toàn độc lập với hệ điều hành
-     - `Software RAID`: Khi ổ lưu trữ được kết nối đến PC hay server mà không có RAID controller, cấu hình **RAID** sẽ được quản lý bởi 1 phần mềm trong HĐH
+     - `Software RAID`: Khi ổ lưu trữ được kết nối đến PC hay server mà không có RAID controller, cấu hình RAID sẽ được quản lý bởi 1 phần mềm trong HĐH
 
 <img src="./Images/so sanh.png">
 
