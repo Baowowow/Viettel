@@ -26,25 +26,25 @@
 #### 2. RAID Levels
 Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách sử dụng kết hợp các phương pháp lưu trữ như `Phân chia dải (striping)`, `Tạo bản sao (Mirroring)` và `Parity (chẵn lẻ)`. Việc sử dụng và kết hợp các kỹ thuật này vào hệ thống RAID được gọi là RAID levels. Mỗi level sẽ có một hiệu năng, độ tin cậy và giá cả khác nhau. Mỗi level cũng có 1 thuật toán khác biệt để thực hiện khả năng chịu lỗi
 - **RAID 0**: Thực hiện `block striping` (phân chia dải theo khối), tức là chia luồng dữ liệu thành các khối logic và phân chia tuần tự vào các ổ đĩa. Khác với các RAID khác, **RAID 0** không có khả năng chịu lỗi, nếu 1 ổ đĩa hỏng thì dữ liệu sẽ bị mất. Tuy vậy, **RAID 0** cung cấp hiệu năng cao nhất. Nó nhanh bởi vì dữ liệu có thể được chuyển đồng thời từ tất cả các ổ đĩa và việc đọc ghi giữa các ổ đĩa cũng có thể được thực hiện đồng thời. 
-    - Tổng dung lượng ổ đĩa sẽ tương ứng với tổng dung lượng của từng ổ đĩa được gộp lại. RAID 0 yêu cầu phải có ít nhất 2 ổ cứng.
+    - Tổng dung lượng ổ đĩa sẽ tương ứng với tổng dung lượng của từng ổ đĩa được gộp lại. **RAID 0** yêu cầu phải có ít nhất 2 ổ cứng.
  
  <img src="./Images/raid0.png">
 
 - **RAID 1**: Thực hiện `disk mirrorin`g (tạo bản sao ổ đĩa), khi 1 bản sao của dữ liệu sẽ được lưu vào cả 2 ổ vì thế nên **RAID 1** có khả năng sửa lỗi của 1 ổ đĩa. Việc để 2 bản của dữ liệu ở 2 ổ khác nhau giúp bảo vệ dữ liệu nếu đĩa bị hỏng. 
-     - RAID 1 chỉ hỗ trợ việc gộp 2 ổ tương đương và tổng dung lượng có thể sử dụng sẽ tương ứng với dung lượng của 1 ổ
+     - **RAID 1** chỉ hỗ trợ việc gộp 2 ổ tương đương và tổng dung lượng có thể sử dụng sẽ tương ứng với dung lượng của 1 ổ
  
   <img src="./Images/raid1.png">
   
   
 - **RAID 2**: Dữ liệu được phân bố tuần tự ra nhiều ổ đĩa theo cấp độ bit hoặc bytes. Một vài ổ đĩa sẽ được sử dụng để dự phòng và chứa các bit dự phòng sử dụng Mã sửa lỗi (Error correcting code - ECC). Ngay khi có những hoạt động phân bố dữ liệu thì các mã này sẽ được tính toán cũng như ghi cùng dữ liệu lưu vào trong ổ đĩa ECC riêng biệt. Nếu như hoạt động đọc dữ liệu xuất hiện, các mã ECC sẽ được đọc nhằm xác nhận không có bất cứ lỗi nào xảy ra từ khi ghi dữ liệu.
      - Nếu như 1 lỗi đơn xảy ra thì nó ngay lập tức sẽ được sửa. **RAID 2** có khả năng chịu lỗi của 1 ổ đĩa. 
-     - RAID 2 hiện tại không còn được sử dụng do chi phí và yêu cầu cao nhưng hiệu suất lại không cao (do phân tán dữ liệu ở cấp độ bit). 
+     - **RAID 2** hiện tại không còn được sử dụng do chi phí và yêu cầu cao nhưng hiệu suất lại không cao (do phân tán dữ liệu ở cấp độ bit). 
      - Tổng dung lượng khả dụng = [(Tổng số ổ đĩa gộp lại trừ cho tổng số ổ được dành ra để dự phòng) x (Dung lượng của một ổ cứng)].
  
  <img src="./Images/raid2.png">
 
-- **RAID 1+0**: Sự kết hợp của `RAID 0` và `RAID 1`. Áp dụng cả `striping` và `disk mirroring` nên phương pháp này đảm bảo cả hiệu năng và khả năng sửa lỗi. Vì đây không phải là RAID level theo chuẩn nên nó sẽ không xuất hiện trong lựa chọn level được hỗ trợ bởi controller. Nếu 4 hoặc nhiều ổ đĩa hơn (theo số chẵn) được chọn cho RAID 1 thì **RAID 1+0** sẽ được tự động áp dụng. 
-     - Tổng dung lượng khả dụng = [(tổng số ổ cứng gộp lại chia đôi) x  (Dung lượng của một ổ cứng)]. RAID 1+0 yêu cầu phải có ít nhất 4 ổ cứng.
+- **RAID 1+0**: Sự kết hợp của `RAID 0` và `RAID 1`. Áp dụng cả `striping` và `disk mirroring` nên phương pháp này đảm bảo cả hiệu năng và khả năng sửa lỗi. Vì đây không phải là RAID level theo chuẩn nên nó sẽ không xuất hiện trong lựa chọn level được hỗ trợ bởi controller. Nếu 4 hoặc nhiều ổ đĩa hơn (theo số chẵn) được chọn cho `RAID 1` thì **RAID 1+0** sẽ được tự động áp dụng. 
+     - Tổng dung lượng khả dụng = [(tổng số ổ cứng gộp lại chia đôi) x  (Dung lượng của một ổ cứng)]. **RAID 1+0** yêu cầu phải có ít nhất 4 ổ cứng.
  
  <img src="./Images/raid10.png">
 
