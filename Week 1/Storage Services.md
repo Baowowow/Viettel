@@ -10,7 +10,7 @@
 ### II. Giải pháp của các vendors để đáp ứng 3 dịch vụ trên 
 
 ### III. Ceph - Giải pháp SDS đáp ứng 3 dịch vụ trên
-#### IV. Tài liệu tham khảo
+### IV. Tài liệu tham khảo
 
 
 ---
@@ -21,6 +21,10 @@
 VD: Lưu file trong máy tính chính là sử dụng **file storage**
 Khi cần truy cập vào dữ liệu, thì máy tính sẽ cần biết đường dẫn đến dữ liệu đó. Khi 1 file được lưu trữ theo cách này, sẽ có những metadata được gán theo nó như creation date, modification date và file size.
 Files có thể được lưu trữ trong các thiết bị NAS, hệ thống lưu trữ nền cloud, network drives, computer hard drives và flash drives
+
+<img src="./Images/file.png">
+
+
 - **Ưu điểm**:
    - Dễ dàng truy cập với các folder quy mô nhỏ
    - Quen thuộc với đa số người dùng
@@ -38,6 +42,10 @@ Files có thể được lưu trữ trong các thiết bị NAS, hệ thống l�
 #### 2. Block storage là gì ?
 **Block storage**: Dữ liệu được chia thành các khối dữ liệu và được lưu trữ theo những phần riêng biệt. Mỗi block dữ liệu được cấp 1 mã định danh (identifier) riêng. Các blocks có thể được lưu trữ ở những môi trường khác nhau, ví dụ 1 block ở window và các block còn lại ở Linux. Khi người dùng yêu cầu dữ liệu thì hệ thống lưu trữ sẽ tập hợp lại các block từ các môi trường và đưa cho người dùng.
 **Block storage** là nơi lưu trữ mặc định cho cả hard disk drive và những dữ liệu thường xuyên cập nhật
+
+<img src="./Images/block.png">
+
+
 Người dùng có thể lưu trữ các blocks ở Storage Area Network hoặc môi trường lưu trữ cloud
 -	**Ưu điểm**:
     - Nhanh (vì block storage không cân phụ thuộc đường dẫn để tìm dữ liệu)
@@ -55,6 +63,10 @@ Người dùng có thể lưu trữ các blocks ở Storage Area Network hoặc 
 #### 3. Object storage là gì ?
 **Object storage**: Files được chia nhỏ ra thành những đơn vị riêng biệt để lưu trữ. Trái ngược với `file storage`, các object được lưu trữ theo 1 môi trường phẳng (flat environment) khi các object ngang hàng nhau và không sử dụng folder hay subfolder. **Object storage** cũng không lưu tất cả dữ liệu vào cùng 1 file. Các object còn chứa 1 mã định danh (identifier) độc nhất để cho phép object có thẻ tìm được trong hệ thống. Ngoài ra còn có cả metadata để mô tả dữ liệu
 Objects có thể được lưu trữ trong ổ cứng máy tính hoặc cloud servers. Tuy nhiên không giống với những storage khác thì ta phải sử dụng 1 HTTP API để có thể truy cập và quản lý objects
+
+<img src="./Images/object.png">
+
+
 -	Uu điểm:
     - Hiệu quả (Trả cho đúng những gì bạn dùng)
     - Có thể xử lý lượng dữ liệu rất lớn
@@ -83,6 +95,10 @@ NetApp's StorageGRID Webscale cung cấp thiết bị giữa NetApp Storage và 
 Với hệ thống từ các nhà phát triển khác, hệ thống StorageGRID là 1 thiết bị rời nhưng nó được tích hợp vào hệ sinh thái của NetApp và cung cấp đầy đủ đặc tính và chức năng tương tự như sản phẩm lưu trữ của công ty
 
 ### III. Ceph - Giải pháp SDS đáp ứng 3 dịch vụ trên
+
+<img src="./Images/ceph.png">
+
+
 `Ceph` là 1 software defined storage platform hợp nhất block storage, object storage và file storage về thành 1 hệ thống thống nhất, hay có thể hiểu là computer cluster. Nó là 1 thành phần của tập công cụ quản lý mã nguồn mở Cloud của OpenStack
 `Ceph` có khả năng scale-out, cho phép nhiều servers cộng tác và biểu diễn như 1 hệ thống lưu trữ đơn với không giới hạn dung lượng. Nó cũng cung cấp các công cụ quản lý lưu trữ như cung cấp mỏng (thin provisioning), replication, inline compression(nén nội tuyến – nén dữ liệu vào bộ nhớ trước khi nó được viết ra đĩa để giảm dung lượng của I/O) và cache tiering (thêm 1 layer storage giữa client và storage chuẩn để giúp tăng tốc độ. `Ceph` là storage platform duy nhất vừa open source, software defined, enterprise class (phù hợp với các doanh nghiệp lớn) và hợp nhất object, block, file storage
 
