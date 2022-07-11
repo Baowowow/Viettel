@@ -19,6 +19,9 @@
 Trước khi files và directories được tạo trên vùng lưu trữ, việc phân vùng sẽ được thực hiện. 1 phân vùng là 1 vùng ổ cứng hoặc vùng lưu trữ khác mà được hệ điều hành quản lý riêng rẽ. 1 file system sẽ được chứa trong 1 phân vùng.
 
 > VD: File system của Linux được tổ chức theo tiêu chuẩn cấp bậc của hệ thống tập tin Filesystem Hierarchy Standard (FHS) 
+
+<img src="./Images/FHS.png">
+
 - Chức năng của các thư mục:
   - /bin: Các chương trình cơ bản
   - /boot: Chứa Linux kernel
@@ -37,9 +40,11 @@ Trước khi files và directories được tạo trên vùng lưu trữ, việc
   - /proc: sử dụng cho Linux kernel, chúng được sử dụng bởi kernel để xuất dữ liệu sang không gian người dùng.
  
  > So sánh giữa FileSystem giữa Window và Linux
+
+<img src="./Images/ss.png">
+
 <a name='2filesystem'></a>  
 ### II. Các loại file system phổ biến
-<a name='reference'></a> 
 Có rất nhiều loại file systems, với cấu trúc logic và đặc tính khác nhau.Các loại file system có thể được phân biệt bởi hệ điều hành và yêu cầu của HĐH đó
 Các loại file system phổ biến bao gồm:
 #### 1.File allocation table (FAT): 
@@ -48,7 +53,7 @@ FAT không hỗ trợ bảo mật nội bộ. Nếu user đăng nhập được 
 FAT cung cấp truy câp nhanh đến files. Tốc độ truy cập files sẽ phụ thuộc vào kiểu file, loại file, kích thước phân vùng, sự phân mảnh và số file trong folder
 Mỗi file trong FAT sẽ được đại diện bởi 1 danh sách liên kết các block. Phần cuối của block trước sẽ chứa ID của  block tiếp theo và nó được lưu vào bảng cấp phát, sẽ có 1 giá trị đặc biệt (giá trị âm) để thể hiện rằng 1 block đang nằm ở cuối chuỗi. Bảng cấp phát còn chứa 1 bit để xác định xem 1 block có đang sẵn hay không. Starting block sẽ được lưu trong Directory Table Format cùng với filename và metadata tương ứng
 
-
+<img src="./Images/fat.png">
 
 Hiện nay FAT không thể đáp ứng được hiệu năng và sự mở rộng của hệ thống nên không còn được sử dụng bởi Windows và được thay thế bằng NTFS
 - Version tiên tiến nhất của FAT là FAT32 với các đặc tính như sau:
@@ -70,11 +75,15 @@ GFS là file system được sử dụng cho HĐH Linux. GFS là 1 cluster các 
 Extended File System hay hệ thống mở rộng tập tin là filesystem đầu tiên được thiết kế dành riêng cho Linux. 
 Cấu trúc dữ liệu của ext filesystem được chia thành nhiều block. Các block này được nhóm lại thành các block group. Trên một hệ thống filesystem lớn có khoảng hàng ngàn các block như vậy. Dữ liệu của một file bất kỳ sẽ được chứa trong một block group duy nhất nào đó khả dụng. Điều này giúp giảm thiểu số lần truy xuất trên đĩa khi đọc một lượng lớn dữ liệu nối tiếp nhau.
 Mỗi block group sẽ luôn bao gồm superblock và descriptor table (bảng mô tả) của block group đó giống hệt nhau. Và các block group còn bao gồm các block sau: block bitmap, inode bitmap, inode table, và cuối cùng là data block (block thực sự chứa dữ liệu)
+
+<img src="./Images/ext2.png">
+
 #### 6. XFS 
 File system có khả năng mở rộng và hiệu năng cao. Nó được tạo ra để hỗ trợ các file lớn (lên đến 16 EB) và cấu trúc directory phức tạp (lên đến 10 triệu entries)
 Đặc điểm chính của XFS là metadata journaling (ghi lại nhật ký metadata) giúp việc khôi phục sau crash nhanh và đơn giản hơn. XFS file system còn có thể chống phân mảnh và thay đổi kích thước file dữ liệu,… nhưng không thể shrink – chia nhỏ phân vùng XFS.
 Một đặc tính quan trọng của XFS đó là khả năng bảo đảm tốc độ truy xuất dữ liệu cho các ứng dụng (Guaranteed Rate I/O),  cho phép các ứng dụng duy trì được tốc độ truy xuất dữ liệu trên disk
 
+<a name='reference'></a> 
 ### IV. Tài liệu tham khảo
 - [FileSystem là gì? | #3 (kipalog.com)](https://kipalog.com/posts/FileSystem-la-gi-----3)
 - [What is a File System? (techtarget.com)](https://www.techtarget.com/searchstorage/definition/file-system)
