@@ -3,15 +3,16 @@
 ---
 ## **MỤC LỤC:**
 
-### I. RAID
+### I. [RAID](#RAID)
 
-### II. Các Performance Metrics cơ bản
+### II. [Các Performance Metrics cơ bản](#Các Performance Metrics cơ bản)
 
-### III. Khái niệm về Software Defined Storage
+### III. [Khái niệm về Software Defined Storage](#Software Define Storage)
 
-### IV. Tài liệu tham khảo
+### IV. [Tài liệu tham khảo](#reference)
 ---
-### I. Khái niệm về RAID
+<a name='RAID'></a> 
+### I. RAID
 #### 1. Khái niệm về RAID
 **RAID** (Redundant Array of Independent Disks) là 1 công nghệ ảo hóa lưu trữ dữ liệu theo hình thức gộp nhiều ổ đĩa vật lý thành 1 hệ thống chung thay vì sử dụng tách rời từng ổ đĩa đơn. Việc này sẽ giúp tăng hiệu năng (khả năng truy xuất dữ liệu, tốc độ đọc ghi…) và độ an toàn dữ liệu
 - Thuật ngữ **RAID** được đặt ra vào năm 1987 bởi nhóm nghiên cứu tại Đại học California. Chữ I trong **RAID** ban đầu là đại diện cho “Inexpensive” bởi vì họ tìm cách gộp các ổ đĩa HDD rẻ tiền trên thị trường. Tuy nhiên ngày nay các ổ đĩa như vậy đã không còn trên thị trường nên chữ “I” trong **RAID** đại diện cho “Independent”
@@ -65,6 +66,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
  
 - **RAID 6**: Tương tự như `RAID 5` nhưng có thêm 1 parity được phân tán qua các ổ đĩa để đảm bảo hệ thống có thể hoạt động kể cả khi 2 ổ cứng bị hỏng. **RAID 6** yêu cầu phải có ít nhất 4 ổ cứng.
 
+<a name='Các Performance Metrics cơ bản'></a>
 ### II. Các Performance Metrics cơ bản
 
 #### 1. IOPS 
@@ -115,14 +117,17 @@ Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể đư�
 - kB_wrtn: tổng số kilobytes ghi  từ device  = kB_read/s * interval (s)
 
 
-### III. Khái niệm về Software Define Storage
+<a name='Software Define Storage'></a>
+### III. Software Define Storage
 **Software Defined Storage (SDS)** là kiến trúc lưu trữ mà phân tách phần mềm lưu trữ (thực hiện chức năng cung cấp dung lượng, bảo vệ dữ liệu và điều khiển sắp xếp dữ liệu) với phần cứng của nó. 
 Việc tách phần mềm ra khỏi phần cứng cho phép SDS có thể dễ dàng thay đổi, nâng cấp và mở rộng phần cứng mà không ảnh hướng đến tài nguyên phần mềm. Khác với các hệ thống lưu trữ cũ như NAS hay SAN, SDN được thiết kế để có thể thực hiện với mọi tiêu chuẩn công nghiệp hoặc hệ thống x86, bỏ đi sự phụ thuộc của phần mềm vào phần cứng độc quyền với mức giá phải chăng.
 SDS còn có khả năng quản lý tập trung các storage trong khi vẫn đảm bảo được các đặc điểm và tính năng đa dạng cho nó. Nói cách khác SDS như 1 controller phần mềm giúp ảo hóa và quản lý bộ lưu trữ vật lý của bạn
 
  <img src="./Images/sds.png">
 
-
+Các ưu điểm chính của Software Defined Storage:
+- Tăng flexibility và Agility: Các platform truyền thống như SAN và NAS thường dựa trên hệ thống độc quyền với chi phí sở hữu rất cao. Hệ thống SAN thì yêu cầu các SAN switches, storage arrays và các thành phần liên quan khác rất phức tạp và đắt tiền. Thiết bị NAS thì rẻ hơn nhưng lại giới hạn về khả năng mở rộng. Khi hết tài nguyên trên NAS, ta sẽ cần phải add thêm 1 thiết bị NAS khác tuy vậy đây cũng không thực sự là chức năng scale-out khi mỗi thiết bị NAS sẽ được biểu diễn riêng lẻ và quản lý riêng biệt. Giải pháp SDS sẽ cung cấp thêm sự mềm dẻo bằng cách cho phép các tổ chức sử dụng các loại phần cứng đạt chuẩn , không bị độc quyền. Hơn nữa, các tổ chức có thể nhận được khả năng scale lớn nhờ SDS bằng cách thêm các thành phần phần cứng đơn lẻ cần thiết để tăng dung lượng và hiệu năng
+<a name='reference'></a> 
 ### IV. Tài liệu tham khảo
 -  [Chapter 4. Redundant Array of Independent Disks (RAID) (mit.edu)](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-raid.html)
 -  [RAID (Redundant Arrays of Independent Disks) - GeeksforGeeks](https://www.geeksforgeeks.org/raid-redundant-arrays-of-independent-disks/)
