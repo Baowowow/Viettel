@@ -31,7 +31,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
  
  <img src="./Images/raid0.png">
 
-- **RAID 1**: Thực hiện `disk mirrorin`g (tạo bản sao ổ đĩa), khi 1 bản sao của dữ liệu sẽ được lưu vào cả 2 ổ vì thế nên **RAID 1** có khả năng sửa lỗi của 1 ổ đĩa. Việc để 2 bản của dữ liệu ở 2 ổ khác nhau giúp bảo vệ dữ liệu nếu đĩa bị hỏng. Dữ liệu sẽ được ghi trực tiếp vào 2 ổ giống hệt với nhau và đối với trường hợp 1 ổ gặp trục trặc thì ổ còn lại sẽ hoạt động bình thường tiếp tục
+- **RAID 1**: Thực hiện `disk mirrorin`g (tạo bản sao ổ đĩa), dữ liệu sẽ được ghi trực tiếp vào 2 ổ giống hệt với nhau và đối với trường hợp 1 ổ gặp trục trặc thì ổ còn lại sẽ hoạt động bình thường tiếp tục. Vì thế nên **RAID 1** có khả năng sửa lỗi của 1 ổ đĩa. 
      - **RAID 1** chỉ hỗ trợ việc gộp 2 ổ tương đương và tổng dung lượng có thể sử dụng sẽ tương ứng với dung lượng của 1 ổ
  
   <img src="./Images/raid1.png">
