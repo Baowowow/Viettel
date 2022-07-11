@@ -58,13 +58,14 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
 - **RAID 4**: Tương tự như `RAID 3` nhưng dữ liệu được phân tán tuần tự theo các khối thay vì các byte. **RAID 4** yêu cầu phải có ít nhất 3 ổ cứng.
 
 - **RAID 5**: Dữ liệu và các Parity sẽ được phân tán tuần tự qua các ổ đĩa. Dữ liệu và parity dự phòng tương ứng của nó không bao giờ cùng nằm trên 1 ổ đĩa. Khi 1 ổ đĩa bị hỏng, dữ liệu gốc của nó có thể khôi phục bằng cách sử dụng Parity nằm ở ổ đĩa khác. **RAID 5** sẽ cho phép có 1 ổ cứng tối đa bị chết ở 1 thời điểm, nếu như có nhiều hơn một ổ cứng ở một thời điểm bị chết thì tất cả dữ liệu sẽ mất hết.
+    - Parity là 1 cách để phát hiện lỗi trong hệ thống lưu trữ. Parity sẽ hoạt động bằng cách thêm 1 bit dữ liệu vào cuối data block để đảm bảo rằng số bit trong block là chẵn hay lẻ. Điều này sẽ giúp thiết bị nhận biết rằng dữ liệu truyền không lỗi sẽ chứa 1 số nhất định các bits. Nếu số bit khác thì thiết bị nguồn sẽ phải gửi lại dữ liệu. Nếu 1 drive trong RAID group fails, hệ thông sẽ sử dụng thông tin trên các đĩa còn lại cùng với thông tin chẵn lẻ để rebuild dữ liệu trên failed drive. Ví dụ RAID group sử dụng tính chẵn, nó có thể xác định failed drive bằng cách thêm 1 bit vào các drive còn lại.  Nếu dữ liệu còn lại kết thúc bởi 1 số lẻ thì parity bit trên failed drive sẽ là 1 để bảo toàn tính chẵn. Còn nếu là 1 số chẵn thì dữ liệu trên failed drive sẽ là 0
     - **RAID 5** vừa cung cấp được cơ chế chịu lỗi vừa đảm bảo hiệu suất hơn so với RAID 3 hay RAID 4 nên nó là công nghệ RAID được sử dụng phổ biến nhất hiện nay. 
     - Tổng dung lượng khả dụng sẽ = [(Tổng số ổ cứng - 1 (ổ dành cho parity)) x (Dung lượng của một ổ cứng)]. **RAID 5** yêu cầu phải có ít nhất 3 ổ cứng.
 
  <img src="./Images/raid5.png">
  
  
-- **RAID 6**: Tương tự như `RAID 5` nhưng có thêm 1 parity được phân tán qua các ổ đĩa để đảm bảo hệ thống có thể hoạt động kể cả khi 2 ổ cứng bị hỏng. **RAID 6** yêu cầu phải có ít nhất 4 ổ cứng.
+- **RAID 6**: Tương tự như `RAID 5` nhưng có thêm 1 parity được phân tán qua các ổ đĩa để đảm bảo hệ thống có thể hoạt động kể cả khi 2 ổ cứng bị hỏng. **RAID 6** yêu cầu phải có ít nhất 4 ổ cứng. 
 
 <a name='PerformanceMetrics'></a>
 ### II. Các Performance Metrics cơ bản
