@@ -131,6 +131,10 @@ Các ưu điểm chính của Software Defined Storage:
 - **Gía cả phải chăng**: Thay vì sử dụng phần cứng độc quyền với giá cao, SDS sử dụng phần cứng tầm trung (standard hardware) để tiết kiệm rất nhiều chi phí và phí sở hữu độc quyền. 
 - **Không giới hạn mở rộng tài nguyên**: Không giống với các hệ thống lưu trữ như NAS và SAN, SDS sẽ cho phép bạn có thể mở rộng hệ thống lưu trữ với các phần cứng tầm trung, khi vẫn tiếp tục quản lý lưu trữ như 1 hệ thống lưu trữ đơn. Khi mở rộng cơ sở hạ tầng lưu trữ thì hiệu năng và độ tin cậy hệ thống sẽ tiếp tục phát triển theo.
 - **Hỗ trợ files, blocks và objects storage**
+Một số nhược điểm của Software Defined Storage:
+- Sự phức tạp 
+- Hiệu năng và độ trễ phụ thuộc nhiều vào phần cứng sử dụng
+- Người sáng chế SDS sẽ không có ảnh hưởng gì đến HĐH nên hệ thống lưu trữ nhiều khả năng sẽ gặp lỗi với mỗi lần cập nhật 
 <a name='reference'></a> 
 ### IV. Tài liệu tham khảo
 -  [Chapter 4. Redundant Array of Independent Disks (RAID) (mit.edu)](https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-raid.html)
