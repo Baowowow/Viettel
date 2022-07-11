@@ -16,9 +16,9 @@
 ---
 ### I. Phân biệt File, Block và Object storage
 **File**, **blocks** và **objects** là những formats lưu trữ chứa, sắp xếp và thể hiện dữ liệu theo những cách khác nhau, với những chức năng và giới hạn tiêng. File storage sắp xếp và thể hiện dữ liệu theo cấp bạc (hierachy) của files trong các folders. Block storage sẽ chia dữ liệu theo các khối và object storage sẽ quản lý dữ liệu và liên kết nó với metadata tương ứng
+Với **File Storage** có thể được di chuyển nội bộ và hoạt động tốt nhất 
 #### 1. File storage là gì ?
-**File Storage**: Dữ liệu được chia vào các folders. **File storage** sử dụng cấu trúc cấp bậc để sắp xếp file theo các folders và folders con theo ý người dùng
-VD: Lưu file trong máy tính chính là sử dụng **file storage**
+**File Storage**: Cơ chế lưu trữ phân cấp được sử dụng để tổ chức và lưu trữ dữ liệu trên ổ cứng máy tính hoặc trên thiết bị NAS. Trong file storage, dữ liệu sẽ được lưu trữ trong files, files được sắp xếp trong các folders, còn các folders được sắp xếp dưới 1 phân cấp các directories và subdirectories
 Khi cần truy cập vào dữ liệu, thì máy tính sẽ cần biết đường dẫn đến dữ liệu đó. Khi 1 file được lưu trữ theo cách này, sẽ có những metadata được gán theo nó như creation date, modification date và file size.
 Files có thể được lưu trữ trong các thiết bị NAS, hệ thống lưu trữ nền cloud, network drives, computer hard drives và flash drives
 
@@ -29,12 +29,16 @@ Files có thể được lưu trữ trong các thiết bị NAS, hệ thống l�
    - Dễ dàng truy cập với các folder quy mô nhỏ
    - Quen thuộc với đa số người dùng
    - Users có thể tự quản lý file dễ dàng
-  -	Cho phép cấp quyền truy cập, đọc, viết hoặc khóa ở user level
+   - File sharing: File sharing rất lý tưởng cho việc tập trung hóa và chia sẻ files trong 1 mạng LAN. File lưu trữ trên 1 thiết bị NAS rất dễ truy cập bởi bất kỳ máy tính nào trong mạng được cấp quyền
+   - Cho phép cấp quyền truy cập, đọc, viết hoặc khóa ở user level
 -	**Nhược điểm**:
     - Hiệu năng giảm nếu phải quản lý một số lượng files lớn vì nếu yêu cầu thêm nhiều tài nguyên để có thể theo dõi các files và folders
     - Không lý tưởng để lưu trức unstructured data , đặc biệt là theo kích thước lớn
     - Đắt đỏ trong việc mở rộng 
 - **Use cases**:
+   - Local file sharing
+   - Truy cập file
+   - Cộng tác tài liệu tập trung (Centralized file collaboration)
    - Lưu trữ, cộng tác tài liệu
    - Backup, recovery
    - Archive: Do khả năng có thể set quyền truy cập theo file level
