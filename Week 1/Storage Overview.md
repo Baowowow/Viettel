@@ -5,9 +5,9 @@
 
 ### I. [RAID](#RAID)
 
-### II. [Các Performance Metrics cơ bản](#Các Performance Metrics cơ bản)
+### II. [Các Performance Metrics cơ bản](#PerformanceMetrics)
 
-### III. [Khái niệm về Software Defined Storage](#Software Define Storage)
+### III. [Khái niệm về Software Defined Storage](#sds)
 
 ### IV. [Tài liệu tham khảo](#reference)
 ---
@@ -66,7 +66,7 @@ Có rất nhiều cách để thực hiện 1 tổ hợp **RAID**, bằng cách 
  
 - **RAID 6**: Tương tự như `RAID 5` nhưng có thêm 1 parity được phân tán qua các ổ đĩa để đảm bảo hệ thống có thể hoạt động kể cả khi 2 ổ cứng bị hỏng. **RAID 6** yêu cầu phải có ít nhất 4 ổ cứng.
 
-<a name='Các Performance Metrics cơ bản'></a>
+<a name='PerformanceMetrics'></a>
 ### II. Các Performance Metrics cơ bản
 
 #### 1. IOPS 
@@ -117,7 +117,7 @@ Trong IBM Spectrum, 1 block là số dung lượng lớn nhất có thể đư�
 - kB_wrtn: tổng số kilobytes ghi  từ device  = kB_read/s * interval (s)
 
 
-<a name='Software Define Storage'></a>
+<a name='sds'></a>
 ### III. Software Define Storage
 **Software Defined Storage (SDS)** là kiến trúc lưu trữ mà phân tách phần mềm lưu trữ (thực hiện chức năng cung cấp dung lượng, bảo vệ dữ liệu và điều khiển sắp xếp dữ liệu) với phần cứng của nó. 
 Việc tách phần mềm ra khỏi phần cứng cho phép SDS có thể dễ dàng thay đổi, nâng cấp và mở rộng phần cứng mà không ảnh hướng đến tài nguyên phần mềm. Khác với các hệ thống lưu trữ cũ như NAS hay SAN, SDN được thiết kế để có thể thực hiện với mọi tiêu chuẩn công nghiệp hoặc hệ thống x86, bỏ đi sự phụ thuộc của phần mềm vào phần cứng độc quyền với mức giá phải chăng.
