@@ -44,6 +44,8 @@ Trước khi files và directories được tạo trên vùng lưu trữ, việc
 <img src="./Images/ss.png">
 
 <a name='2filesystem'></a>  
+
+Có 2 kiểu filesystem được sử dụng chủ yếu là Journaling FS và Not-journaling FS. Trong đó Journaling FS được khuyến khích sử dụng hơn. Journaling filesystem hay filesystem kèm nhật ký sẽ lưu thay đổi đến filesystem trước khi nó thực hiện tác vụ. Chính vì thế mà nó có thể khôi phục sau lỗi hệ thống với ít khả năng mất dữ liệu. Đổi lại, quá trình ghi nhật ký sẽ giảm đi đôi chút tốc độ đọc viết.
 ### II. Các loại file system phổ biến
 Có rất nhiều loại file systems, với cấu trúc logic và đặc tính khác nhau.Các loại file system có thể được phân biệt bởi hệ điều hành và yêu cầu của HĐH đó
 Các loại file system phổ biến bao gồm:
