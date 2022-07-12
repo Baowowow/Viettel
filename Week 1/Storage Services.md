@@ -15,8 +15,7 @@
 
 ---
 ### I. Phân biệt File, Block và Object storage
-**File**, **blocks** và **objects** là những formats lưu trữ chứa, sắp xếp và thể hiện dữ liệu theo những cách khác nhau, với những chức năng và giới hạn tiêng. File storage sắp xếp và thể hiện dữ liệu theo cấp bạc (hierachy) của files trong các folders. Block storage sẽ chia dữ liệu theo các khối và object storage sẽ quản lý dữ liệu và liên kết nó với metadata tương ứng
-Với **File Storage** có thể được di chuyển nội bộ và hoạt động tốt nhất 
+**File**, **blocks** và **objects** là những formats lưu trữ chứa, sắp xếp và thể hiện dữ liệu theo những cách khác nhau, với những chức năng và giới hạn tiêng. File storage sắp xếp và thể hiện dữ liệu theo cấp bạc (hierachy) của files trong các folders. Block storage sẽ chia dữ liệu theo các khối và object storage sẽ quản lý dữ liệu và liên kết nó với metadata tương ứng 
 #### 1. File storage là gì ?
 **File Storage**: Cơ chế lưu trữ phân cấp được sử dụng để tổ chức và lưu trữ dữ liệu trên ổ cứng máy tính hoặc trên thiết bị NAS. Trong file storage, dữ liệu sẽ được lưu trữ trong files, files được sắp xếp trong các folders, còn các folders được sắp xếp dưới 1 phân cấp các directories và subdirectories
 Khi cần truy cập vào dữ liệu, thì máy tính sẽ cần biết đường dẫn đến dữ liệu đó. Khi 1 file được lưu trữ theo cách này, sẽ có những metadata được gán theo nó như creation date, modification date và file size.
