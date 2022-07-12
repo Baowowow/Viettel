@@ -98,13 +98,20 @@ IBM cung cấp lưu trữ đám mây IBM cloud dựa trên RESTful API và nó c
 NetApp's StorageGRID Webscale cung cấp thiết bị giữa NetApp Storage và Cloud Storage. Điều này cho phép các block và file storage có thể được nhân bản trên Cloud, thêm chức năng phục hồi và khả dụng với trung tâm dữ liệu phần cứng.
 Với hệ thống từ các nhà phát triển khác, hệ thống StorageGRID là 1 thiết bị rời nhưng nó được tích hợp vào hệ sinh thái của NetApp và cung cấp đầy đủ đặc tính và chức năng tương tự như sản phẩm lưu trữ của công ty
 
-### III. Ceph - Giải pháp SDS đáp ứng 3 dịch vụ trên
-
+### III. Giải pháp SDS đáp ứng 3 dịch vụ trên
+#### 1. Ceph
 <img src="./Images/ceph.png">
 
 
 `Ceph` là 1 software defined storage platform hợp nhất block storage, object storage và file storage về thành 1 hệ thống thống nhất, hay có thể hiểu là computer cluster. Nó là 1 thành phần của tập công cụ quản lý mã nguồn mở Cloud của OpenStack
 `Ceph` có khả năng scale-out, cho phép nhiều servers cộng tác và biểu diễn như 1 hệ thống lưu trữ đơn với không giới hạn dung lượng. Nó cũng cung cấp các công cụ quản lý lưu trữ như cung cấp mỏng (thin provisioning), replication, inline compression(nén nội tuyến – nén dữ liệu vào bộ nhớ trước khi nó được viết ra đĩa để giảm dung lượng của I/O) và cache tiering (thêm 1 layer storage giữa client và storage chuẩn để giúp tăng tốc độ. `Ceph` là storage platform duy nhất vừa open source, software defined, enterprise class (phù hợp với các doanh nghiệp lớn) và hợp nhất object, block, file storage
+
+#### 2. Nutanix 
+`Nutanix` là 1 dịch vụ lưu trữ định nghĩa mềm được thiết kế bằng Amazon Web Services Simple Storage Service (AWS S3)tương đương với REST API interface và có khả năng xử lý đến hàng petabytes các dữ liệu phi cấu trúc và do máy tạo ra. Nutanix cung cấp file services và block services là một phần của là 1 phần của Hệ thống lưu trữ phân tán - DSF (Distributed Storage Fabric). Ngoài ra ta còn có thể thêm Nutanix Objects vào sử dụng, từ đó cho phép block, file và object storage có thể cùng tồn tại song hành. Ta có thể triển khai và quản lý những đặc tính này trên 1 môi trường đơn
+#### 3. IBM Spectrum Scale
+IBM Spectrum Scale chỉ hỗ trợ File storage và Object Storage. Còn Object storage sẽ được xử lý bởi IBM Cloud Object Storage
+#### 4. Gluster
+Red Hat Gluster storage là 1 platform lưu trữ mở, định nghĩa mềm có thể quản lý dễ dàng các dữ liệu phi cấu trúc cho các môi trường vật lý, ảo hay cloud. Gluster storage sẽ kết hợp cả file storage và object storage với 1 kiến trúc có thể mở rộng, thiết kế để lưu trữ với giá cả hợp lý và quản lý dữ liệu tăng trưởng lên đến petabyte. (Hiện nay Gluster đã hỗ trợ cả block storage)
 
 #### IV. Tài liệu tham khảo
 - [Object vs. File vs. Block Storage: What’s the Difference? | IBM](https://www.ibm.com/cloud/blog/object-vs-file-vs-block-storage)
@@ -112,6 +119,7 @@ Với hệ thống từ các nhà phát triển khác, hệ thống StorageGRID 
 - [Difference Between Object Storage, File Storage & Block Storage - Alibaba Cloud](https://www.alibabacloud.com/knowledge/difference-between-object-storage-file-storage-block-storage)
 - [Block, file and object storage interfaces enable integration (techtarget.com)](https://www.techtarget.com/searchstorage/feature/Block-file-and-object-storage-interfaces-enable-integration)
 - [What is Ceph? | Answer from SUSE Defines](https://www.suse.com/suse-defines/definition/ceph/)
+- [Nutanix Support & Insights](https://portal.nutanix.com/page/documents/details?targetId=Objects-v3_2:Objects-v3_2)
 
 
 
