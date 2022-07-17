@@ -16,11 +16,13 @@
 
 **a. Direct-attached storage (DAS)**: DAS là kiểu lưu trữ đơn giản nhất và rẻ nhất cho hệ thống máy tính. Giống như cái tên, DAS kết nối trực tiếp ổ cứng đến máy tính hoặc server thông qua 1 bus interface
 
-![](RackMultipart20220717-1-iyasxu_html_2eec86ba5924357f.png)
+<img src="./Images/das.png">
+
 
 **b. Storage Area Network (SAN)**: SAN là hệ thống lưu trữ rời có chức năng tự bảo vệ và quản lý dữ liệu. SAN kết nối đến 1 server hoặc nhiều server qua 1 mạng lưu trữ dành riêng
 
-![](RackMultipart20220717-1-iyasxu_html_4116ca18eb84d8d7.png)
+<img src="./Images/san.png">
+
 
 SAN có thể được sử dụng bởi nhiều servers. Mỗi server sẽ có một hoặc nhiều kết nối nhanh, dành riêng cho lưu trữ (dedicated storage) đến một hoặc nhiều mảng lưu trữ (storage array). SAN cho phép nhiều máy tính có thể chia sẻ truy cập đến các storage controllers. Điều này sẽ cung cấp sự linh hoạt lớn để đảm bảo cơ sở hạ tầng CNTT cho doanh nghiệp. Trong các tổ chức lớn, SAN sẽ cho phép sự chia sẻ công việc khi system administrators có thể quản lý các máy tính còn storage administrators sẽ quản lý SAN
 
@@ -56,7 +58,8 @@ Các thiết bị NAS rất dễ để triển khai client truy cập cũng rấ
 
 Các thiết bị NAS rất phổ biến trong datacenter ngày nay. Tuy vậy, thiết bị NAS cũng có rất nhiều khuyết điểm lớn. Nó chậm hơn so với DAS hoặc SAN và hiệu năng lưu trữ có thể đến ngưỡng thắt cổ chai bởi vì tất cả dữ liệu sẽ phải đi qua bộ xử lý riêng của NAS. Thiết bị NAS cũng bị giới hạn khả năng mở rộng. Khi 1 thiết bị NAS đầy, bạn sẽ phải tiếp tục thêm vào, thêm vào thiết bị để đáp ứng nhu cầu. Nó sẽ tạo ra &quot;islands of storage&quot; và gây khó khăn cho việc lưu trữ
 
-![](RackMultipart20220717-1-iyasxu_html_b64ce451f21460c8.png)
+<img src="./Images/block1.png">
+
 
 #### 3. Hệ thống dựa trên cơ chế object storage
 
@@ -64,13 +67,12 @@ Hệ thống nền object sử dụng các containers để chứa dữ liệu t
 
 Hệ thống lưu trữ nền storage sẽ thường được sử dụng cho cloud services của các nhà cung cấp như IBM, Amazon S3, Google và Facebook
 
-Container là 1 bundle nhỏ, gọn của 1 hoặc nhiều ứng dụng và các thành phần phụ thuộc cần thiết để code đó có thể chạy hay nói cách khác, 1 container có code, runtime environment, system tools và libraries. 1 container cũng có thể chứa các dịch vụ cơ sở hạ tầng như storafe, hay 1 hybrid của các apps và storagr. Đóng gói tất cả mọi thứ cùng nhau khiến 1 container trở nên gọn và tiện và sẽ giúp giảm các xung đột thực thi.
+ - Container là 1 bundle nhỏ, gọn của 1 hoặc nhiều ứng dụng và các thành phần phụ thuộc cần thiết để code đó có thể chạy hay nói cách khác, 1 container có code, runtime environment, system tools và libraries. 1 container cũng có thể chứa các dịch vụ cơ sở hạ tầng như storafe, hay 1 hybrid của các apps và storagr. Đóng gói tất cả mọi thứ cùng nhau khiến 1 container trở nên gọn và tiện và sẽ giúp giảm các xung đột thực thi.
+ - Containers thường được so sánh với máy ảo (VMs) nhưng kích thước của VM thì nhỏ hơn rất nhiều. 1 container chỉ cần 1 phần nhỏ của hệ điều hành và tài nguyên hệ thống để có thể chạy các nội dung của nó, mà có thể là 1 hay nhiều ứng dụng. Và container còn có thể chạy ở bất cứ đâu
+ - Flat address space – Hệ thống bộ nhợ gán địa chỉ máy tính. Address space là bộ nhớ được cấp cho tất cả địa chỉ có thể cho 1 thực thể điện toán, ví dụ như 1 thiết bị, 1 file hay 1 server.
 
-Containers thường được so sánh với máy ảo (VMs) nhưng kích thước của VM thì nhỏ hơn rất nhiều. 1 container chỉ cần 1 phần nhỏ của hệ điều hành và tài nguyên hệ thống để có thể chạy các nội dung của nó, mà có thể là 1 hay nhiều ứng dụng. Và container còn có thể chạy ở bất cứ đâu
+<img src="./Images/obj.png">
 
-Flat address space – Hệ thống bộ nhợ gán địa chỉ máy tính. Address space là bộ nhớ được cấp cho tất cả địa chỉ có thể cho 1 thực thể điện toán, ví dụ như 1 thiết bị, 1 file hay 1 server.
-
-![](RackMultipart20220717-1-iyasxu_html_6fb93e5f99b89f4f.png)
 <a name='ss'></a> 
 ### II. Hard Disk và SSD
 
@@ -80,7 +82,10 @@ Các ổ cứng được sử dụng phổ biến hiện nay bao gồm SATA (Ser
 
 SATA drives sẽ cung cấp được dung lượng lớn nhất (2 đến 4 TB) và tỷ lệ giá/gigabytes cũng rẻ nhất. Tuy vậy SATA drives sẽ chậm hơn (thường là 7200 RPM) và thiếu tin cậy hơn các công nghệ khác. SATA thường được thực thi trong SANs như là ổ lưu trữ thứ hai và cho các dữ liệu ứng dụng với yêu cầu thấp về IOPS
 
-![](RackMultipart20220717-1-iyasxu_html_4965d1f8cec4d6a4.png)
+<img src="./Images/trend.png">
+
+
+> Mỗi công nghệ lưu trữ sẽ là 1 sự đánh đổi giữa dung lượng, hiệu năng và giá cả
 
 SAS drives thường được sử dụng trong servers (DAS) hoặc SANs. SAS drives sẽ cung cấp 1 sự đánh đổi giữa hiệu năng và dung lượng. Khi hiệu năng của nó rất cao (10000 đến 15000 RPM) trong khi dung lượng thấp (300, 600 đến 900 GB). SAS drives đáng tin cậy hơn SATA drives và các thành phần của nó được thiết kế để xứ lý nhiều tác vụ đọc/viết và yêu cầu IOPS cao
 
