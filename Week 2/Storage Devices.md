@@ -30,19 +30,16 @@ Dữ liệu không thể được chia sẻ giữa các LUNs riêng biệt hoặ
 
 - `LUN (Logical Unit Number)`: LUN là 1 identifier được cấp cho các đĩa ở hệ thống lưu trữ, nó sẽ được xác định trong storage controller và phân vùng để host servers có thể truy cập vào. 1 máy tính có thể sử dụng các LUNS này để chứa dữ liệu. 1 volume là 1 phần của LUN được tạo ra với volume management software
 - `Cluster File System` : Cluster File Systems được sử dụng cho các cluster of computer để file system có thể được chia sẻ và lan truyền qua các hệ thống. 1 cluster file system có thể được truy cập bởi nhiều máy tính vào cùng thời điểm thông qua 1 network hay 1 SAN.
--
 
 SANs được sử dụng rộng rãi trong các môi trường yêu cầu tốc độ cao hoặc nhiệm vụ chiến lượn, ví dụ Online Transaction Processing (OLTP) Database – Hệ thống quản lý CSDL hoạt động, Enterprise Resource Planning – ERP (Hoạch định tài nguyên doanh nghiệp) và hệ thống ảo hóa
 
 Ưu điểm của SANs bao gồm:
 
 - **Tốc độ cao**: Tốc độ SAN rất cao do
-
        - Sử dụng Fabric interconnects (UCS Fabric interconnect là thành phần chính trong hệ thống điện toán hợp nhất của Cisco (Cisco Unified Computing System) – được thiết kế để tăng khả năng mở rộng và giảm chi phí của data centers bằn cách thực thi tất cả các thành phần vào 1 single platform): Tốc độ thường vào khoảng 40 Gbps và 80 Gbps và chuẩn InfiniBand EDR trong 1 cluster 12x có thể lên đến 300 Gbps tốc độ dữ liệu.
-      - Thêm tốc độ: Việc bạn thêm nhiều drives vào 1 SAN giúp bạn tăng tốc độ truy cập đọc ghi khả dụng cho máy tính sử dụng SAN
-
-      - Tối ưu quản lý: Quản lý xử lý và lưu trữ tách rời nhau
-      - Bảo vệ dữ liệu: Chức năng bảo vệ dữ liệu, ví dụ như back-up và tạo bản sao off-site, có thể được làm bên ngoài máy tình chạy ứng dụng và không ảnh hưởng đến hiệu ặng của servers
+       - Thêm tốc độ: Việc bạn thêm nhiều drives vào 1 SAN giúp bạn tăng tốc độ truy cập đọc ghi khả dụng cho máy tính sử dụng SAN
+       - Tối ưu quản lý: Quản lý xử lý và lưu trữ tách rời nhau
+       - Bảo vệ dữ liệu: Chức năng bảo vệ dữ liệu, ví dụ như back-up và tạo bản sao off-site, có thể được làm bên ngoài máy tình chạy ứng dụng và không ảnh hưởng đến hiệu ặng của servers
 
 So sánh với các hệ thống lưu trữ khác thì SANs sẽ có giá thành cao hơn vì nó đươc thiết kế để cho ra hiệu năng và độ tin cậy cao nhất
 
@@ -64,12 +61,11 @@ Các thiết bị NAS rất phổ biến trong datacenter ngày nay. Tuy vậy, 
 #### 3. Hệ thống dựa trên cơ chế object storage
 
 Hệ thống nền object sử dụng các containers để chứa dữ liệu trong 1 không gian địa chỉ phẳng (flat address space). 1 cointainer sẽ lưu trữ dữ liệu thực, metadata và Object ID riêng biệt để xác định objects. Dữ liệu trong hệ thống lưu trữ nền object sẽ được truy cập sử dụng HTTP qua web browser hoặc trực tiếp qua API REST. Flat address space sẽ cho phép việc đơn giản hóa và mở rộng lớn trong lưu trữ nhưng dữ liệu trong các hệ thống này lại không thể sửa đổi (ngoài việc xóa bỏ hay ghi đè version mới)
-
-Hệ thống lưu trữ nền storage sẽ thường được sử dụng cho cloud services của các nhà cung cấp như IBM, Amazon S3, Google và Facebook
-
- - Container là 1 bundle nhỏ, gọn của 1 hoặc nhiều ứng dụng và các thành phần phụ thuộc cần thiết để code đó có thể chạy hay nói cách khác, 1 container có code, runtime environment, system tools và libraries. 1 container cũng có thể chứa các dịch vụ cơ sở hạ tầng như storafe, hay 1 hybrid của các apps và storagr. Đóng gói tất cả mọi thứ cùng nhau khiến 1 container trở nên gọn và tiện và sẽ giúp giảm các xung đột thực thi.
+- Container là 1 bundle nhỏ, gọn của 1 hoặc nhiều ứng dụng và các thành phần phụ thuộc cần thiết để code đó có thể chạy hay nói cách khác, 1 container có code, runtime environment, system tools và libraries. 1 container cũng có thể chứa các dịch vụ cơ sở hạ tầng như storafe, hay 1 hybrid của các apps và storagr. Đóng gói tất cả mọi thứ cùng nhau khiến 1 container trở nên gọn và tiện và sẽ giúp giảm các xung đột thực thi.
  - Containers thường được so sánh với máy ảo (VMs) nhưng kích thước của VM thì nhỏ hơn rất nhiều. 1 container chỉ cần 1 phần nhỏ của hệ điều hành và tài nguyên hệ thống để có thể chạy các nội dung của nó, mà có thể là 1 hay nhiều ứng dụng. Và container còn có thể chạy ở bất cứ đâu
  - Flat address space – Hệ thống bộ nhợ gán địa chỉ máy tính. Address space là bộ nhớ được cấp cho tất cả địa chỉ có thể cho 1 thực thể điện toán, ví dụ như 1 thiết bị, 1 file hay 1 server.
+
+Hệ thống lưu trữ nền storage sẽ thường được sử dụng cho cloud services của các nhà cung cấp như IBM, Amazon S3, Google và Facebook
 
 <img src="./Images/obj.png">
 
