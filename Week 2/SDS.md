@@ -35,7 +35,7 @@ Concept SDS bắt đầu nổi lên do sự bùng nổ dữ liệu nhờ sự ra
 Các ứng dụng thế hệ mới như phân tích Big Data và cloud-based trở nên phù hợp với các concept của SDS như application-aware storage và application-centric data center. Các hệ thống lưu trữ truyền thống thì không phù hợp với các ứng dụng cloud và big data do sự khác biệt về cấu trúc. Các ứng dụng mới sẽ yêu cầu khả năng mở rộng cao, đảm bảo cả dữ liệu cấu trúc và phi cấu trúc, tập dữ liệu lớn và lưu trữ cả object storage và block storage file.
 
 <a name='archie'></a> 
-### II. [Kiến trúc của SDS]
+### II. Kiến trúc của SDS
 - Virtual Data Plane: Chứa dữ liệu để thực hiện truy hồi và apply data services trước khi chuyển nó đến Policy Driven Control Plane. Nó cũng apply các policy được chọn cho các objects trên datastore.
 - Policy-driven Control Plane: Cây cầu nối giữa ứng dụng và cơ sở hạ tầng, đảm bảo rằng các quy định hợp pháp sẽ được đáp ứng trong suốt vòng đời ứng dụng. Ngoài ra, nó còn cung cấp các "danh xưng" cho các vị trí khác nhau trong môi trường IT (application administrator, storage administrator, data protection administrator...). Control Plane được lập trình thông qua Public APIs
 - Data services được áp dụng bởi Virtual Data Plane bao gồm:
