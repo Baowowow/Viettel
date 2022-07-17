@@ -34,7 +34,7 @@ Nhứng đặc tính này đối lập với hệ thống lưu trữ truyền th
 Concept SDS bắt đầu nổi lên do sự bùng nổ dữ liệu nhờ sự ra đời của Big Data; việc khó thích nghi với sự thay đổi nhanh của các quy trinh nghiệp vụ (business process) và workloads các ứng dụng liên quan, chi phí sở hữu tắng cao và thách thức về bảo mật của hệ thống lưu trữ truyền thống. 
 Các ứng dụng thế hệ mới như phân tích Big Data và cloud-based trở nên phù hợp với các concept của SDS như application-aware storage và application-centric data center. Các hệ thống lưu trữ truyền thống thì không phù hợp với các ứng dụng cloud và big data do sự khác biệt về cấu trúc. Các ứng dụng mới sẽ yêu cầu khả năng mở rộng cao, đảm bảo cả dữ liệu cấu trúc và phi cấu trúc, tập dữ liệu lớn và lưu trữ cả object storage và block storage file.
 
-<a name='archie'></a> 
+<a name='archi'></a> 
 ### II. Kiến trúc của SDS
 - Virtual Data Plane: Chứa dữ liệu để thực hiện truy hồi và apply data services trước khi chuyển nó đến Policy Driven Control Plane. Nó cũng apply các policy được chọn cho các objects trên datastore.
 - Policy-driven Control Plane: Cây cầu nối giữa ứng dụng và cơ sở hạ tầng, đảm bảo rằng các quy định hợp pháp sẽ được đáp ứng trong suốt vòng đời ứng dụng. Ngoài ra, nó còn cung cấp các "danh xưng" cho các vị trí khác nhau trong môi trường IT (application administrator, storage administrator, data protection administrator...). Control Plane được lập trình thông qua Public APIs
@@ -85,6 +85,8 @@ Một số nhược điểm:
 - Một số SDS solutions vẫn phần nào phụ thuộc vào thiết bị phần cứng. Một số SDS platforms vẫn yêu cầu phần cứng từ hardware compability lists (HCL) của 1 số vendors nhất định. SDS yêu cầu những hardware này để có thể hỗ trợ cho các chức năng lưu trữ và để chạy cả SDS software stack hoặc ứng dụng lưu trữ.
 - Yêu cầu nhiều nhân lực hỗ trợ: Hệ thống phân tán (distributed system) sẽ gặp nhiều thách thức khi vận hành
 - Phức tạp: Vận hành phần mềm, triển khai phần cứng phù hợp....
+
+<a name='reference'></a> 
 #### IV. Tài liệu tham khảo
 - [software-defined-storage-concepts.pdf (netdevgroup.com)]([https://www.ibm.com/cloud/blog/object-vs-file-vs-block-storage](https://www.netdevgroup.com/online/support/courses/documentation/software-defined-storage-concepts.pdf))
 - [Software Defined Storage For Dummies, IBM Platform Computing Edition ](https://www.doc-developpement-durable.org/file/Projets-informatiques/cours-&-manuels-informatiques/stockage/SoftwareDefinedStorageforDummies.pdf)
