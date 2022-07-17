@@ -35,7 +35,7 @@ SANs được sử dụng rộng rãi trong các môi trường yêu cầu tốc
 
 Ưu điểm của SANs bao gồm:
 
-- **Tốc độ cao**: Tốc độ SAN rất cao do
+- **Tốc độ cao**: Tốc độ SAN rất cao do:
        - Sử dụng Fabric interconnects (UCS Fabric interconnect là thành phần chính trong hệ thống điện toán hợp nhất của Cisco (Cisco Unified Computing System) – được thiết kế để tăng khả năng mở rộng và giảm chi phí của data centers bằn cách thực thi tất cả các thành phần vào 1 single platform): Tốc độ thường vào khoảng 40 Gbps và 80 Gbps và chuẩn InfiniBand EDR trong 1 cluster 12x có thể lên đến 300 Gbps tốc độ dữ liệu.
        - Thêm tốc độ: Việc bạn thêm nhiều drives vào 1 SAN giúp bạn tăng tốc độ truy cập đọc ghi khả dụng cho máy tính sử dụng SAN
        - Tối ưu quản lý: Quản lý xử lý và lưu trữ tách rời nhau
