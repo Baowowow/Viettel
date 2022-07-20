@@ -77,7 +77,7 @@ Object-based storage system sẽ thường được sử dụng cho cloud servic
 Các tiêu chuẩn kết nối ổ cứng được sử dụng phổ biến hiện nay bao gồm SATA (Serial ATA), SAS (Serial Attached SCSI) và NVMe (Non-Volatile Memory Express). 
 - **SATA**: SATA truyền dữ liệu giữa host system và thiết bị lưu trữ thông qua 1 serial cable tốc độ cao, tuy nhiên dữ liệu không đi trực tiếp mà phải qua bộ điều khiển SATA. SATA không thể thực hiện tác vụ đọc và ghi cùng lúc bởi vì nó chỉ cung cấp khả năng truyền half-duplex. SATA chỉ nên được ưu tiên với light workloads và cold data hoặc khi ta ưu tiên về giá cả hơn hiệu năng
 
-<img src="./Images/sata.html">
+<img src="./Images/sata.webp">
 
 
 - **SAS**: SAS là sự cải tiến của SATA khi mà ổ cứng SSD tiến vào thị trường. SAS là giao thức cho việc truyền dẫn điểm điểm (point-to-point) giữa thiết bị lưu trữ và máy tính đang lưu trữ dữ liệu. Point-to-point nghĩa là tất cả dữ liệu truyền qua SAS sẽ được gửi trực tiếp giữa 2 thực thể giao tiếp (thiết bị lưu trữ và máy tính) kết nối với nhau thông qua cable. Vì thế với SAS, controllers được liên kết trực tiếp đến thiết bị lưu trữ và SAS còn cung cấp cơ chế truyền full-duplex cung cấp việc xử lý tác vụ đọc-viết đồng thời
