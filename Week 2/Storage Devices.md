@@ -92,6 +92,7 @@ Các tiêu chuẩn kết nối ổ cứng được sử dụng phổ biến hi�
 
 SATA drives sẽ cung cấp được dung lượng lớn nhất (2 đến 4 TB) và tỷ lệ giá/gigabytes cũng rẻ nhất. Tuy vậy SATA drives sẽ chậm hơn (thường là 7200 RPM) và thiếu tin cậy (Reliability - Khả năng đảm bảo sự toàn vẹn của dữ liệu của hệ thống lưu trữ khi nó bị lỗi) hơn các công nghệ khác. SATA thường được thực thi trong SANs như là ổ lưu trữ thứ hai và cho các dữ liệu ứng dụng với yêu cầu thấp về IOPS
 
+
 <img src="./Images/trend.png">
 
 
@@ -101,4 +102,9 @@ SAS drives thường được sử dụng trong servers (DAS) hoặc SANs. SAS d
 
 #### 2. SSD
 
-SSD sử dụng công nghệ flash để cung cấp việc lưu trữ dữ liệu tốc độ cao và tin cậy. Flash storage sử dụng transistors cổng trôi (floating gate transistors) để lưu trữ dữ liệu thành 0s và 1s trong các cell đơn. Dung lượng SSD tăng rất nhanh, với dung lượng hiện tại lên đến khoảng 500GB, và cực kỳ nhanh: Tác vụ đọc/viết trong Flash storage được đo theo microseconds so với milliseconds của HDD, và IOPS được đo trong khoảng từ 10000 đến 1 triệu, so sánh với hàng trăm của HDD. Mặc dù giá của SDD đang giảm xuống và dung lượng tăng lên, công nghệ SSD vẫn là cấp cao nhất và được sử dụng nhiều trong trường hợp hiệu năng cao cần thiết hơn dung lượng.
+SSD sử dụng công nghệ flash để cung cấp việc lưu trữ dữ liệu tốc độ cao và tin cậy. Flash storage sử dụng transistors cổng trôi (floating gate transistors) để lưu trữ dữ liệu thành 0s và 1s trong các cell đơn. Dung lượng SSD tăng rất nhanh, với dung lượng hiện tại lên đến khoảng 500GB, và cực kỳ nhanh: Tác vụ đọc/viết trong Flash storage được đo theo microseconds so với milliseconds của HDD, và IOPS được đo trong khoảng từ 10000 đến 1 triệu, so sánh với hàng trăm của HDD. 
+> So sánh:
+- SSD cung cấp hiệu năng lớn hơn hẳn so với SSD, cùng với đó là sự gọn nhẹ. Đổi lại thì giá thành của SSD là cao hơn rất nhiều so với HDD nếu xét về tỉ số giá/1 GB. 
+- SSD sẽ hao mòn theo thời gian, SSD có 1 lifetime write limit nhất định, mỗi lần ghi thông tin là mỗi lần memory cells bị ảnh hưởng. 
+- Khả năng phục hồi dữ liệu: Hệ điều hành sẽ không biết dữ liệu được lưu trữ ở đâu trong drive với SSD, mà drive controller sẽ theo dõi khi dữ liệu được di chuyển trong drive. Trong trường hợp mà ổ đĩa gặp sự cố hoặc khi ta overwrite bảng phân vùng thì việc khôi phục dữ liệu có thể sẽ không thể thực hiện. Việc khôi phục trong các ổ đĩa cứng sẽ đơn giản hơn nhiếu so với SDD.
+
