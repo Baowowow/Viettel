@@ -85,7 +85,7 @@ Một số nhược điểm:
 - Một số SDS solutions vẫn phần nào phụ thuộc vào thiết bị phần cứng. Một số SDS platforms vẫn yêu cầu phần cứng từ hardware compability lists (HCL) của 1 số vendors nhất định. SDS yêu cầu những hardware này để có thể hỗ trợ cho các chức năng lưu trữ và để chạy cả SDS software stack hoặc ứng dụng lưu trữ.
 - Yêu cầu nhiều nhân lực hỗ trợ: Hệ thống phân tán (distributed system) sẽ gặp nhiều thách thức khi vận hành
 - Phức tạp: Vận hành phần mềm, triển khai phần cứng phù hợp....
-
+- SDS solutions chưa thể đáp ứng hiệu năng (VD: IOPS, Latency...) như hệ thống lưu trữ truyền thống  
 <a name='reference'></a> 
 #### IV. Tài liệu tham khảo
 - [software-defined-storage-concepts.pdf (netdevgroup.com)]([https://www.ibm.com/cloud/blog/object-vs-file-vs-block-storage](https://www.netdevgroup.com/online/support/courses/documentation/software-defined-storage-concepts.pdf))
