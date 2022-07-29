@@ -34,9 +34,9 @@ Khi PC được bật, MBR sẽ bắt đầu chạy chương trình BIOS lưu tr
 
 <img src="./Images/SMBR.png">
 
-       - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
-       - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
-       - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
+      - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
+      - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
+      - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
 
 <a name='gpt'></a> 
 ### 2. GPT (GUID Partition table)
@@ -60,8 +60,9 @@ Cấu trúc của GPT gồm:
 Sự khác biệt giữa MBR và GPT:
 
 - MBR ra đời sớm hơn GPT mới ra đời 1 vài năm trước. MBR được sử dụng với các máy tính sử dụng BIOS cũ (Legacy BIOS) , GPT là công nghệ phân vùng mới và là được dùng cho các máy tính sử dụng UEFI (Unified Extensible Firmware Interface) BIOS
-| Boot Process | Legacy BIOS | UEFI |                                                                                                          
-|--------------|---------------|---------------|
+
+| Boot Process | Legacy BIOS | UEFI         |                                                                                                          
+|--------------|-------------|--------------|
 | 1 | Bật nguồn | Bật nguồn| 
 | 2 | Tự kiểm tra (POTS)| Boot manager của UEFI kiểm tra cấu hình boot                    | 
 | 3 | Loads BIOS       | Boot manager load vào bộ nhớ và thực thi OS loader hoặc OS kernel                       |
