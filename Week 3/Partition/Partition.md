@@ -104,12 +104,12 @@ Qúa trình GRUB được tiến hành sau khi OS đọc partition table
 <a name='active'></a> 
 
 ### 3. Cách thức hoạt động:
-Với các hệ thống thuần BIOS cũ (BIOS Legacy): boot.img sẽ được ghi trong Master Bood Code. Boot.img sẽ trỏ đến diskboot.img. Diskboot.img là sector đầu tiên của core.img với mục địch chính là load phần còn lại của core.img và được nhận diện vởi số LBA sectors được ghi bởi grub-install. Trong ổ cứng phân vùng MBR, core.img sẽ được lưu trữ trong sector đầu tiên của phân vùng đầu với MBR. Còn với ổ cứng phân vùng GPT thì core.img sẽ được ghi trong 1 phân vùng riêng của nó và đặt flag là “BIOS\_grub”.
+- Với các hệ thống thuần BIOS cũ (BIOS Legacy): boot.img sẽ được ghi trong Master Bood Code. Boot.img sẽ trỏ đến diskboot.img. Diskboot.img là sector đầu tiên của core.img với mục địch chính là load phần còn lại của core.img và được nhận diện vởi số LBA sectors được ghi bởi grub-install. Trong ổ cứng phân vùng MBR, core.img sẽ được lưu trữ trong sector đầu tiên của phân vùng đầu với MBR. Còn với ổ cứng phân vùng GPT thì core.img sẽ được ghi trong 1 phân vùng riêng của nó và đặt flag là “BIOS\_grub”.
 core.img sẽ load /boot/grub/i386-pc/normal.mod từ phân vùng được ghi lại bởi grub-install. Nếu số phân vùng thay đổi thi GRUB sẽ không thể tiến vào normal.mod và nó sẽ đưa người dùng vào chế độ GRUB Rescue prompt. Còn nếu phân vùng đúng và nó vào được normal.mod thì normal.mod sẽ giải mã (parse) file /boot/grub/grub.cfg, load modules và đưa ta vào menu GRUB
 
 <img src="./Images/grub2.png">
 
-Với cá hệ thống UEFI thì /efi/<distro>/grubx64.ef sẽ được tải như 1 file trong  EFI System Partition và được boot trực tiếp bởi firmware mà không cần boot.img như MBR sector 0. Boot/grub sẽ được lưu trong EFI System Partition hoặc phân vùng boot/partition riêng biệt. Sau đó file file /boot/grub/x86\_64-efi/normal.mod sẽ được load và đưa ta vào menu GRUB
+- Với cá hệ thống UEFI thì /efi/<distro>/grubx64.ef sẽ được tải như 1 file trong EFI System Partition và được boot trực tiếp bởi firmware thay vì boot.img như MBR sector 0. Boot/grub sẽ được lưu trong EFI System Partition hoặc phân vùng boot/partition riêng biệt. Sau đó file file /boot/grub/x86\_64-efi/normal.mod sẽ được load và đưa ta vào menu GRUB
 
 <a name='references'></a>   
 ### III. Reference
