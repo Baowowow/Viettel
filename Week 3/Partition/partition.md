@@ -88,8 +88,7 @@ GNU GRUB được phát triển từ gói phần mềm GRUB (Grand Unified Bootl
 
 Qúa trình GRUB được tiến hành sau khi OS đọc partition table
 
-Có hai phiên bản của GRUB đang được sử dụng phổ biến:
-- GRUB 1 hay còn được gọi là GRUB legacy, chỉ còn được sử dụng ở các phiên bản cũ của các bản phân phối Linux. GRUB 2, được viết lại từ đầu với mục tiêu thay thế phiên bản tiền nhiệm GRUB 1 và được sử dụng bởi đa số các bản phân phối Linux hiện nay.
+- Có hai phiên bản của GRUB đang được sử dụng phổ biến: GRUB 1 hay còn được gọi là GRUB legacy, chỉ còn được sử dụng ở các phiên bản cũ của các bản phân phối Linux. GRUB 2, được viết lại từ đầu với mục tiêu thay thế phiên bản tiền nhiệm GRUB 1 và được sử dụng bởi đa số các bản phân phối Linux hiện nay.
 - GRUB có 2 cơ chế boot riêng biệt. 1 là load 1 hệ điều hành trực tiếp (dành cho các HĐH hỗ trợ Multiboot như Linux, FreeBSD, NetBSD và OpenBSD). 2 là chain-load(tải chuỗi) 1 HĐH bằng cách load 1 boot loader khác và bood loader đó sẽ load HĐH mà chúng ta cần (Dành cho các HĐH không hỗ trợ Multiboot như Windows)
 
 <a name='feature'></a> 
