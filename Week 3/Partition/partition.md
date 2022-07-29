@@ -45,9 +45,9 @@ GPT được định nghĩa là 1 kiểu partition table cho ổ cứng vật l�
 
 Cấu trúc của GPT gồm:
 - **Primary Partition Table**: Bao gồm protective MBR, GPT header và partition table để giúp hệ điều hành load thông tin và truy cập dữ liệu phân vùng hiện có
-           - `Protective MBR`: Đảm bảo rằng các công cụ cũ (chỉ có thể đọc được MBR) sẽ không nhầm lẫn GPT drive với 1 drive không được phân vùng và ghi lại dữ liệu của GPT đó theo 1 MBR mới
-           - `GPT Header`: Xác định vị trí và và kích thước của các partition entries bao gồm partition table và CRC checksum được sử dụng để xác định sự toàn vẹn của GPT Header. Khi CRC phát hiện dữ liệu bị lỗi, nó sẽ tìm cách khôi phục dữ liệu bằng cách sử dụng bản backup
-           - `Partition table (Partition entries array)`: Mảng chứa các partition entries, mỗi parition entries ứng với mỗi phân vùng được tạo. Format của Partition entries
+       - `Protective MBR`: Đảm bảo rằng các công cụ cũ (chỉ có thể đọc được MBR) sẽ không nhầm lẫn GPT drive với 1 drive không được phân vùng và ghi lại dữ liệu của GPT đó theo 1 MBR mới
+       - `GPT Header`: Xác định vị trí và và kích thước của các partition entries bao gồm partition table và CRC checksum được sử dụng để xác định sự toàn vẹn của GPT Header. Khi CRC phát hiện dữ liệu bị lỗi, nó sẽ tìm cách khôi phục dữ liệu bằng cách sử dụng bản backup
+       - `Partition table (Partition entries array)`: Mảng chứa các partition entries, mỗi parition entries ứng với mỗi phân vùng được tạo. Format của Partition entries
            <img src="./Images/guidf.png">
 
 
