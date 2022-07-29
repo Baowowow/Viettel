@@ -33,9 +33,9 @@ Khi PC được bật, MBR sẽ bắt đầu chạy chương trình BIOS lưu tr
 <img src="./Images/SMBR.png">
 
 - MBR Structure: MBR gồm 3 phần chính:
-      - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
-      - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
-      - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
+    - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
+    - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
+    - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
 
 <a name='gpt'></a> 
 ### 2. GPT (GUID Partition table)
