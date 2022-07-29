@@ -30,10 +30,9 @@ MBR (Master Boot Record) là phần code nhỏ chịu trách nhiệm load hệ �
 
 Khi PC được bật, MBR sẽ bắt đầu chạy chương trình BIOS lưu trữ rên ROM hay nói cách khác khi bật máy, code MBR sẽ được đọc đầu tiên để load HĐH từ ổ cứng
 
-- MBR Structure: MBR gồm 3 phần chính:
-
 <img src="./Images/SMBR.png">
 
+- MBR Structure: MBR gồm 3 phần chính:
       - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
       - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
       - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
@@ -66,10 +65,10 @@ Sự khác biệt giữa MBR và GPT:
 | 1 | Bật nguồn | Bật nguồn| 
 | 2 | Tự kiểm tra (POTS)| Boot manager của UEFI kiểm tra cấu hình boot                    | 
 | 3 | Loads BIOS       | Boot manager load vào bộ nhớ và thực thi OS loader hoặc OS kernel                       |
-| 4 | Nhận diện thiết bị boot  | 1 NIC                   |
-| 5 | BIOS tìm code lưu trữ trong MBR  | 1 NIC                   |
-| 6 | MBR loads code từ Boot Sector | 1 NIC                   |
-| 7 | Bootsector loads và chạy Boodloader  | 1 NIC                   |
+| 4 | Nhận diện thiết bị boot  |               |
+| 5 | BIOS tìm code lưu trữ trong MBR  ||
+| 6 | MBR loads code từ Boot Sector |               |
+| 7 | Bootsector loads và chạy Boodloader  |                  |
 
 - MBR hỗ trợ cho từ Windows 7 trở xuống còn GPT hỗ trợ các HĐH mới như Windows 8, 10, 11
 - MBR sử dụng 32 bits cho 1 block logic, còn GPT cấp 64 bits chi 1 block logic. Từ đó dung lượng tối đa của MBR là khoảng 2.2 TB còn GPT là 9.4 ZB (1 ZB = 1 tỷ TB)
