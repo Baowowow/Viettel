@@ -33,9 +33,9 @@ Khi PC được bật, MBR sẽ bắt đầu chạy chương trình BIOS lưu tr
 <img src="./Images/SMBR.png">
 
 - MBR Structure: MBR gồm 3 phần chính:
-    - **Master boot routines**: 446 bytes và chứa 1 biến load coder, thông tin cần thiết của MBR. Một khi hard disk được boot, MBR cấp quyền điều khiển cho OS trong partition table
+    - **Master boot code**: 446 bytes và chứa 1 biến load coder,dùng để load hệ điều hành.
     - **Disk Partition**: Chứa thông tin phân vùng và vị trí của chúng, 64 bytes
-    - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không. Nếu không thì máy tính sẽ không thể boot
+    - **Boot signature**: Hay identifier code, dùng để xác định xem MBR code có đúng hay không, giá trị của nó là AA55H hoặc 55AAH (đại diện cho dãy hex byte 55AA). Nếu khác giá trị này thì máy tính sẽ không thể boot. 
 
 <a name='gpt'></a> 
 ### 2. GPT (GUID Partition table)
@@ -58,21 +58,21 @@ Cấu trúc của GPT gồm:
 ### 3. Sự khác nhau giữa MBR và GPT
 Sự khác biệt giữa MBR và GPT:
 
-- MBR ra đời sớm hơn GPT mới ra đời 1 vài năm trước. MBR được sử dụng với các máy tính sử dụng BIOS cũ (Legacy BIOS) , GPT là công nghệ phân vùng mới và là được dùng cho các máy tính sử dụng UEFI (Unified Extensible Firmware Interface) BIOS
+- MBR ra đời sớm hơn GPT . MBR được sử dụng với các máy tính sử dụng BIOS cũ (Legacy BIOS) còn GPT là công nghệ phân vùng mới được dùng cho các máy tính sử dụng UEFI (Unified Extensible Firmware Interface) BIOS
 
 | Boot Process | Legacy BIOS | UEFI         |                                                                                                          
 |--------------|-------------|--------------|
 | 1 | Bật nguồn | Bật nguồn| 
-| 2 | Tự kiểm tra (POTS)| Boot manager của UEFI kiểm tra cấu hình boot                    | 
+| 2 | Tự kiểm tra (POST)| Boot manager của UEFI kiểm tra cấu hình boot                    | 
 | 3 | Loads BIOS       | Boot manager load vào bộ nhớ và thực thi OS loader hoặc OS kernel                       |
 | 4 | Nhận diện thiết bị boot  |               |
 | 5 | BIOS tìm code lưu trữ trong MBR  ||
 | 6 | MBR loads code từ Boot Sector |               |
 | 7 | Bootsector loads và chạy Boodloader  |                  |
 
-- MBR hỗ trợ cho từ Windows 7 trở xuống còn GPT hỗ trợ các HĐH mới như Windows 8, 10, 11
-- MBR sử dụng 32 bits cho 1 block logic, còn GPT cấp 64 bits chi 1 block logic. Từ đó dung lượng tối đa của MBR là khoảng 2.2 TB còn GPT là 9.4 ZB (1 ZB = 1 tỷ TB)
-- MBR chỉ hỗ 3 phân vùng chính, 1 phân vùng phụ với kích thước phân vùng lớn nhất là 2TB. Với GPT thì HĐH Windows cho phép nhiều nhất 128 phân vùng trên 1 GPT drive và không giới hạn với các HĐH khác, với kích thước phân vùng lớn nhất là 256 TB. 
+- MBR hỗ trợ cho HĐH Windows 7 32-bit và các HĐH cũ như WinXP, Win98... còn GPT thì hỗ trợ cho tất cả các HĐH bản 64-bit của Windows 7, 8, 10, 11 và Vista.
+- MBR sử dụng 32 bits cho 1 block, còn GPT cấp 64 bits cho 1 block. Từ đó dung lượng tối đa của MBR là khoảng 2.2 TB còn GPT là 9.4 ZB (1 ZB = 1 tỷ TB)
+- MBR chỉ hỗ 3 phân vùng chính, 1 phân vùng phụ (Khác với các phân vùng chính, phân vùng phụ không được format với 1 filesystem mà sẽ được sử dụng để tạo ra các logical drives) với kích thước phân vùng lớn nhất là 2TB. Với GPT thì HĐH Windows cho phép nhiều nhất 128 phân vùng trên 1 GPT drive và không giới hạn với các HĐH khác, với kích thước phân vùng lớn nhất là 256 TB. 
 - GPT chứa các giá trị backup của GPT Header và Entries trong 1 phân vùng riêng nên GPT có khả năng khôi phục hơn MBR
 - GPT cũng lưu trữ các giá trị CRC (Cyclic redundancy check – Cơ chế phát hiện lỗi được sử dụng nhiều trong thiết bị lưu trữ) để kiểm tra tính nguyên vẹn của dữ liệu. Nếu dữ liệu bi lỗi thì, GPT sẽ nhận ra vấn đề và sẽ cố khôi phục dữ liệu từ 1 vị trí khác trong ổ đĩa. MBR thì sẽ không biết dữ liệu của nó bị lỗi ở đâu và ta chỉ có thể phát hiện lỗi khi quá trình boot failed hoạc phân vùng drive bị mất
 
@@ -135,3 +135,4 @@ core.img sẽ load /boot/grub/i386-pc/normal.mod từ phân vùng được ghi l
 - [What is GNU GRUB? - Definition from WhatIs.com (techtarget.com)](https://www.techtarget.com/whatis/definition/GNU-GRUB)
 
 - [GNU GRUB Manual 2.06](https://www.gnu.org/software/grub/manual/grub/grub.html#Features)
+
