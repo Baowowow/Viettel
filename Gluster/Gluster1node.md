@@ -1,6 +1,7 @@
 # Cài đặt Gluster 1 node trên Ubuntu
 ---
 ## Mục Lục 
+
 [I. Cài đặt](#set)
 
 [II. Tài liệu tham khảo](#references)
