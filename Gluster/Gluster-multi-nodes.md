@@ -2,7 +2,8 @@
 ---
 ## Mục Lục 
 [I. Yêu cầu](#req)
-[I. Cài đặt](#set)
+
+[II. Cài đặt](#set)
 - [1. Setup](#su)
 - [2. Tạo volume distributed tại node1](#vd)
 - [3. Tạo volume replicated tại node1](#vr)
