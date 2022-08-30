@@ -2,8 +2,11 @@
 ---
 ## Mục Lục 
 [1. Giới thiệu về GlusterFS](#intro)
+
 [2. Các loại volumes cơ bản](#vol)
+
 [3.Một số đặc điểm nổi bật khi triển khai GlusterFS](#feature)
+
 [4. Tài liệu tham khảo](#references)
 ---
  <a name='intro'></a> 
@@ -23,25 +26,25 @@ Mỗi node trong pool có thể exports 1 hoặc nhiều bricks thông qua glust
 
 Mỗi volume là một tập hợp logic của các bricks. Các volume sẽ được tạo ra trên pool để client có thể mount đến và sử dụng. Có nhiều cách để truy cập vào gluster volumes trong đó cách được khuyên dùng là sử dụng Gluster native client. Cách này sẽ đem lại hiệu năng tốt nhất và cũng đơn giản nhất do nó dựa trên FUSE (Interface cho phép người dùng tạo các filesystem các máy tính mà không phải chỉnh sửa kernel, FUSE được tích hợp trong kernel của Linux). Ngoài ra, còn có thể truy cập đến volume của Gluster thông qua OpenStack Swift API và các giao thức như NFS và CIFS.
 
-![](RackMultipart20220830-1-xxnhsb_html_439649c9b190001b.png)
+  <img src="./Images/mount.png">
 
  <a name='vol'></a> 
 ### 2. Các loại volumes cơ bản:
 
 - Distributed Volume:
 
-- Dữ liệu được lưu trữ phân tán trên từng bricks trong volume.
-- Ta có thể sử dụng distributed volume nếu ưu tiên mở rộng dung lượng lưu trữ (dung lượng lưu trữ bằng tổng dung lượng các brick) và không cần các brick dự phòng để khắc phục lỗi.
-- Nếu 1 trong các brick bị lỗi thì dữ liệu trên brick đó sẽ mất
+     - Dữ liệu được lưu trữ phân tán trên từng bricks trong volume.
+     - Ta có thể sử dụng distributed volume nếu ưu tiên mở rộng dung lượng lưu trữ (dung lượng lưu trữ bằng tổng dung lượng các brick) và không cần các brick dự phòng để khắc phục lỗi.
+     - Nếu 1 trong các brick bị lỗi thì dữ liệu trên brick đó sẽ mất
 
   <img src="./Images/dis.png">
 
 - Replicated Volume:
 
-- Dữ liệu được nhân bản đến những brick còn lại trong volume và đồng bộ tất cả các cập nhật mới.
-- Nó sẽ cung cấp tính sẵn sàng (high availability) và độ tin cậy cao cho dữ liệu.
-- Số lượng nhân bản là không giới hạn
-- Lãng phí tài nguyên hệ thống
+    - Dữ liệu được nhân bản đến những brick còn lại trong volume và đồng bộ tất cả các cập nhật mới.
+    - Nó sẽ cung cấp tính sẵn sàng (high availability) và độ tin cậy cao cho dữ liệu.
+    - Số lượng nhân bản là không giới hạn
+    - Lãng phí tài nguyên hệ thống
 
   <img src="./Images/rep.png">
 
@@ -49,27 +52,27 @@ Mỗi volume là một tập hợp logic của các bricks. Các volume sẽ đ�
 
   <img src="./Images/disrep.png">
 
-- Hệ thống sẽ yêu cầu cần tối thiểu 3 node
-- Dữ liệu được phân tán vào các replicated bricks trong volume
-- Số bricks phải là bội của số replica. Các bricks kề nhau sẽ là replica của nhau. Ví dụ có 8 bricks và số replica là 2 thì 2 bricks đầu sẽ là replica của nhau và tương tự đến hết.
-- Vừa đảm bảo mở rộng được dung lượng lưu trữ, vừa đảm báo tính sẵn sàng cho hệ thống.
+    - Hệ thống sẽ yêu cầu cần tối thiểu 3 node
+    - Dữ liệu được phân tán vào các replicated bricks trong volume
+    - Số bricks phải là bội của số replica. Các bricks kề nhau sẽ là replica của nhau. Ví dụ có 8 bricks và số replica là 2 thì 2 bricks đầu sẽ là replica của nhau và tương tự đến hết.
+    - Vừa đảm bảo mở rộng được dung lượng lưu trữ, vừa đảm báo tính sẵn sàng cho hệ thống.
 
 - Disperse:
 
-- Disperse volume dựa trên erasure coding (EC). EC là 1 cơ chế bảo vệ dữ liệu trong đó dữ liệu được phân mảnh và mã hóa với các dữ liệu dự phòng (redundancy data) và lưu trữ phân tán trên các bricks của volume. Điều này cho phép dữ liệu khôi phục được lưu trữ trên 1 hay nhiều brick trong trường hợp các bricks bị lỗi.
-- Dispersed volume yêu cầu ít không gian lưu trữ hơn khi so sánh với replicated volume. Ví dụ để trữ 1TB dữ liệu thì replicated volume sẽ yêu cầu 2TB bộ nhớ trong khi với dispersed volume là 1.5 TB (với redundancy level 2)
-- Khả năng chịu lỗi của dispersed volume sẽ phụ thuộc vào redundancy level
+    - Disperse volume dựa trên erasure coding (EC). EC là 1 cơ chế bảo vệ dữ liệu trong đó dữ liệu được phân mảnh và mã hóa với các dữ liệu dự phòng (redundancy data) và lưu trữ phân tán trên các bricks của volume. Điều này cho phép dữ liệu khôi phục được lưu trữ trên 1 hay nhiều brick trong trường hợp các bricks bị lỗi.
+    - Dispersed volume yêu cầu ít không gian lưu trữ hơn khi so sánh với replicated volume. Ví dụ để trữ 1TB dữ liệu thì replicated volume sẽ yêu cầu 2TB bộ nhớ trong khi với dispersed volume là 1.5 TB (với redundancy level 2)
+    - Khả năng chịu lỗi của dispersed volume sẽ phụ thuộc vào redundancy level
 
   <img src="./Images/disperf.png">
 
 - Việc bảo toàn dữ liệu cung qua EC có thể được biểu diễn dưới công thức: n = k + m. Với n là tổng số lượng các bricks, k là số bricks chứa các dữ liệu và m là số bricks mà hệ thống có thể chịu lỗi (đồng thời là các parity bricks giúp khôi phục dữ liệu khi có sự cố)
 - Các cấu hình được hỗ trợ:
-- 6 bricks với redundancy level 2 (4 + 2)
-- 10 bricks với redundancy level 2 (8 + 2)
-- 11 bricks với redundancy level 3 (8 + 3)
-- 12 bricks với redundancy level 4 (8 + 4)
-- 20 bricks với redundancy level 4 (16 + 4)
-- Khi cần ghi dữ liệu, client sẽ tính toán dữ liệu và tạo ra các parity data. Khi bricks bị lỗi, parity data ta sẽ được sử dụng để khôi phục lại dữ liệu
+    - 6 bricks với redundancy level 2 (4 + 2)
+    - 10 bricks với redundancy level 2 (8 + 2)
+    - 11 bricks với redundancy level 3 (8 + 3)
+    - 12 bricks với redundancy level 4 (8 + 4)
+    - 20 bricks với redundancy level 4 (16 + 4)
+    - Khi cần ghi dữ liệu, client sẽ tính toán dữ liệu và tạo ra các parity data. Khi bricks bị lỗi, parity data ta sẽ được sử dụng để khôi phục lại dữ liệu
 
 <a name='feature'></a> 
 ### 3.Một số đặc điểm nổi bật khi triển khai GlusterFS:
