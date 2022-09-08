@@ -7,7 +7,9 @@
 
 [3.Một số đặc điểm nổi bật khi triển khai GlusterFS](#feature)
 
-[4. Tài liệu tham khảo](#references)
+[4. Kết luận](#con)
+
+[5. Tài liệu tham khảo](#references)
 
 ---
  <a name='intro'></a> 
@@ -76,15 +78,28 @@ Mỗi volume là một tập hợp logic của các bricks. Các volume sẽ đ�
     - Khi cần ghi dữ liệu, client sẽ tính toán dữ liệu và tạo ra các parity data. Khi bricks bị lỗi, parity data ta sẽ được sử dụng để khôi phục lại dữ liệu
 
 <a name='feature'></a> 
-### 3.Một số đặc điểm nổi bật khi triển khai GlusterFS:
-
+### 3. Một số tính năng khác của GlusterFS:
+- Volume snapshot:
+    - Tạo ra các bản copies của Gluster volume
+    - Các snapshot có thể dược clone thành 1 volume mới
+    - Dựa trên LVM thin provisioning snapshot nên sẽ chỉ hoạt động với các LVM volume
 - Không có Metadata server: Khác với Ceph và nhiều distributed filesystems khác, GlusterFS không sử dụng Metadata server. Trong 1 kiến trúc filesystem với 1 metadata server, data sẽ được lưu trữ phân tán trên các nodes và sẽ có 1 server theo dõi vị trí của các metadata và điều khiển truy cập đến storage nodes. Khi người dùng có yêu cầu I/O đến 1 file, nó sẽ gửi yêu cầu dến metadata server, và server sẽ bảo với client phải truy hồi data ở đâu. Với Gluster thì nó sẽ tìm ra đúng node mà file được lưu trữ bằng thông qua thuật toán hashing (băm). Việc bỏ đi metadata server là 1 ưu điểm lớn khi nó tránh được tình trạng "thắt cổ chai" khi truy xuất dữ liệu qua Metadata server và không truy xuất đến dữ liệu được nếu metadata server bị lỗi
+- Quota: Đặt ra giới hạn sử dụng dung lượng cho các volumes hoặc các directories trong volume
+- Geo-replication: Sao chép dữ liệu giữa những hệ thống lưu trữ nằm ở vị trí khác nhau
+    - Back-ups dữ liệu khi cần khôi phục
+    - Asynchoronous replication: Kiểm tra thay đổi ở files theo chu kỳ và đồng bộ nếu phát hiện ra có sự thay đổi
+
+
+<a name='con'></a> 
+### 4. Kết luận:
 - Cài đặt và thực thi đơn giản ở cả phía client và server
 - Việc xóa volume và thay đổi nodes trong cluster còn phức tạp
-- Geo-replication: Sao chép dữ liệu giữa những hệ thống lưu trữ nằm ở vị trí khác nhau.
+- Khả năng mở rộng tốt
+- Mạnh về cung cấp file storage
+- Nhiều lựa chọn về volume hơn so với Ceph
 
 <a name='refer'></a> 
-### 4.Tài liệu tham khảo:
+### 5.Tài liệu tham khảo:
 [Scale Out with GlusterFS (acm.org)](https://dl.acm.org/doi/fullHtml/10.5555/2555789.2555790)
 
 [Oracle® Linux Gluster Storage for Oracle Linux User's Guide - Chapter 1 Introduction to Gluster Storage for Oracle Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/gluster-storage/gluster-intro.html#gluster-about)
