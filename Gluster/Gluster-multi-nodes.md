@@ -1,10 +1,8 @@
 # Cài đặt Gluster-multi-node trên Ubuntu
 ---
 ## Mục Lục 
-
 [I. Yêu cầu](#req)
-
-[II. Cài đặt](#set)
+[I. Cài đặt](#set)
 - [1. Setup](#su)
 - [2. Tạo volume distributed tại node1](#vd)
 - [3. Tạo volume replicated tại node1](#vr)
@@ -12,7 +10,7 @@
 - [5. Tạo volume dispersed tại node1](#vdi)
 - [6. Cài đặt GlusterFS cho client](#cli)
 
-[III. Tài liệu tham khảo](#references)
+[II. Tài liệu tham khảo](#references)
 ---
  <a name='req'></a> 
 ### I. Yêu cầu
@@ -64,6 +62,15 @@ gluster peer probe 192.168.1.20
 
  <a name='vd'></a> 
 #### 2. Tạo volume distributed tại node1:
+- Cú pháp:
+```
+gluster volume create NEW-VOLNAME [transport tcp | rdma | tcp,rdma]:NEW-BRICK
+```
+> Nếu transport type không được chỉ định thì tcp sẽ được mặc định lựa chọn
+
+- Cần tối thiểu 1 brick để có thể tạo volume
+
+- Tạo volume với 1 brick
 ```
 mkdir -p /data/block1
 gluster volume create vol1 transport tcp 192.168.1.17:/data/block1
@@ -83,6 +90,15 @@ gluster volume start testvol
 
  <a name='vr'></a> 
 #### 2. Tạo volume replicated tại node1:
+- Cú pháp:
+```
+gluster volume create NEW-VOLNAME [replica <count>] [transport tcp | rdma | tcp,rdma]:NEW-BRICK
+```
+> Nếu transport type không được chỉ định thì tcp sẽ được mặc định lựa chọn
+
+- Cần tối thiểu 2 brick để có thể tạo volume
+
+- Tạo volume với 2 brick
 ```
 mkdir -p /data/block2 tại node 1
 mkdir -p /data/block1 tại node 2
@@ -103,12 +119,22 @@ gluster volume start testvol
 
 <a name='vdr'></a>
 #### 3. Tạo volume distributed replicated trên 4 node:
+- Cú pháp:
+```
+gluster volume create NEW-VOLNAME [replica <count>] [transport tcp | rdma | tcp,rdma]:NEW-BRICK
+```
+> Nếu transport type không được chỉ định thì tcp sẽ được mặc định lựa chọn
+
+- Cú pháp tạo volume distributed replicated và replicated là giống nhau tuy nhiên nó sẽ phân biệt nhau qua số bricks
+- Số bricks của distributed replicated volume sẽ phải là bội của số replica
+- Cần tối thiểu 4 bricks để có thể tạo volume
+- Tạo volume với 2 replica và 4 bricks:
 ```
 mkdir -p /data/block3 tại node 1
 mkdir -p /data/block2 tại node 2
 mkdir -p /data/block1 tại node 3
 mkdir -p /data/block1 tại node 4
-gluster volume create vol3 replica 2 transport tcp tcp 192.168.1.17:/data/block3 192.168.1.18:/data/block2 192.168.1.19:/data/block1 192.168.1.20:/data/block1
+gluster volume create vol3 replica 2 transport tcp 192.168.1.17:/data/block3 192.168.1.18:/data/block2 192.168.1.19:/data/block1 192.168.1.20:/data/block1
 ```
 - Khởi động volume:
  ```
@@ -122,8 +148,19 @@ gluster volume start testvol
 > Volume status:
 
   <img src="./Images/statusvol3.png">
+
 <a name='vdi'></a>
+
 #### 4. Tạo volume dispersed trên 4 node:
+- Cú pháp:
+```
+gluster volume create NEW-VOLNAME [disperse <count>] [redundancy <count>] [transport tcp | rdma | tcp,rdma]:NEW-BRICK
+```
+> Nếu transport type không được chỉ định thì tcp sẽ được mặc định lựa chọn
+
+- Số bricks của dispersed volume sẽ bằng tổng của các brick dữ liệu (disperse count) + brick dự phòng (redundancy count)
+- Các cấu hình được khuyên dùng là 6 bricks (4+2), 10 bricks (8+2), 11 bricks (8+3), 12 bricks (8+4) và 20 bricks (16+4)
+- Tạo volume với 3 bricks chứa dữ liệu và 1 brick dự phòng:
 ```
 mkdir -p /data/block4 tại node 1
 mkdir -p /data/block3 tại node 2
@@ -155,9 +192,11 @@ apt-get install glusterfs-client
 mkdir -p /data/block1
 mkdir -p /data/block2
 mkdir -p /data/block3
-mount -t glusterfs 192.168.1.17:/vol1 /mnt
-mount -t glusterfs 192.168.1.17:/vol2 /mnt
-mount -t glusterfs 192.168.1.17:/vol3 /mnt
+mkdir -p /data/block4
+mount -t glusterfs 192.168.1.17:/vol1 /data/block1
+mount -t glusterfs 192.168.1.17:/vol2 /data/block2
+mount -t glusterfs 192.168.1.17:/vol3 /data/block3
+mount -t glusterfs 192.168.1.17:/vol4 /data/block4
 
  ```
 
